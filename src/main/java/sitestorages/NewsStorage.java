@@ -1,4 +1,4 @@
-package siteStorage.storage;
+package sitestorages;
 
 
 import sitemodels.News;
