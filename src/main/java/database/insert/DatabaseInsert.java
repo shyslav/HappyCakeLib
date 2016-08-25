@@ -1,6 +1,6 @@
 package database.insert;
 
-import com.shyslav.util.DatabaseConnection;
+import database.configuration.DatabaseConnection;
 
 import java.io.InputStream;
 import java.sql.Connection;
