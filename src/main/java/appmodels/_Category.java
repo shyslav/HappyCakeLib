@@ -5,13 +5,13 @@ import java.io.Serializable;
 /**
  * Created by shyshkin_vlad on 22.04.16.
  */
-public class category implements Serializable{
+public class _Category implements Serializable{
     private int id;
     private String name;
     private String description;
     private byte[] image;
 
-    public category(int id, String name, String description, byte[] image) {
+    public _Category(int id, String name, String description, byte[] image) {
         this.id = id;
         this.name = name;
         this.description = description;

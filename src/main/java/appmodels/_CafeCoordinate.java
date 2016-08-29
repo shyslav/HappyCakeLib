@@ -5,13 +5,13 @@ import java.io.Serializable;
 /**
  * Created by shyshkin_vlad on 22.04.16.
  */
-public class cafeCoordinate implements Serializable {
+public class _CafeCoordinate implements Serializable {
     private int id;
     private String address;
     private String mobilePhone;
     private String cafeemail;
 
-    public cafeCoordinate(int id, String address, String mobilePhone, String cafeemail) {
+    public _CafeCoordinate(int id, String address, String mobilePhone, String cafeemail) {
         this.id = id;
         this.address = address;
         this.mobilePhone = mobilePhone;

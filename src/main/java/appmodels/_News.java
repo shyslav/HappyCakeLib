@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by Shyshkin Vladyslav on 28.03.2016.
  */
-public class news implements Serializable {
+public class _News implements Serializable {
     private int id;
     private int authorID;
     private String name;
@@ -16,7 +16,7 @@ public class news implements Serializable {
     private int view;
     private String imageLink;
 
-    public news(int id, int authorID, String name, String nText, Date nDate, String tegs, int view, String imageLink) {
+    public _News(int id, int authorID, String name, String nText, Date nDate, String tegs, int view, String imageLink) {
         this.id = id;
         this.authorID = authorID;
         this.name = name;

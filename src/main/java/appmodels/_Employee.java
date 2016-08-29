@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by Shyshkin Vladyslav on 28.03.2016.
  */
-public class employees implements Serializable {
+public class _Employee implements Serializable {
     private int id;
     private int positionID;
     private int cafeID;
@@ -17,7 +17,7 @@ public class employees implements Serializable {
     private String elogin;
     private String epassword;
 
-    public employees(int id, int positionID, int cafeID, String name, String lastname, String address, Date birthdayDay, String elogin, String epassword) {
+    public _Employee(int id, int positionID, int cafeID, String name, String lastname, String address, Date birthdayDay, String elogin, String epassword) {
         this.id = id;
         this.positionID = positionID;
         this.cafeID = cafeID;

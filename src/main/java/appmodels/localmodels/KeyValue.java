@@ -1,4 +1,4 @@
-package appmodels;
+package appmodels.localmodels;
 
 /**
  * Created by Shyshkin Vladyslav on 19.05.2016.

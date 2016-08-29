@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by shyshkin_vlad on 22.04.16.
  */
-public class dish implements Serializable {
+public class _Dish implements Serializable {
     private int id;
     private int categoryId;
     private String name;
@@ -16,7 +16,7 @@ public class dish implements Serializable {
     private String readyORnot;
     private String sell;
 
-    public dish(int id, int categoryId, String name, String description, int amount, double price, String image, String readyORnot, String sell) {
+    public _Dish(int id, int categoryId, String name, String description, int amount, double price, String image, String readyORnot, String sell) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;

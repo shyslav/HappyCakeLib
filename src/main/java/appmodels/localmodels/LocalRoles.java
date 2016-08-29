@@ -1,9 +1,9 @@
-package appmodels;
+package appmodels.localmodels;
 
 /**
  * Created by Shyshkin Vladyslav on 19.05.2016.
  */
-public class Roles {
+public class LocalRoles {
     private String labelName;
     private String type; //{textArea, textField};
     private int maxLenght;
@@ -11,7 +11,7 @@ public class Roles {
     private boolean emptyOrNot;
     private KeyValue keyValue;
 
-    public Roles(String LabelName, String text, int maxLenght, int minLenght, boolean emptyOrNot, KeyValue keyValue) {
+    public LocalRoles(String LabelName, String text, int maxLenght, int minLenght, boolean emptyOrNot, KeyValue keyValue) {
         labelName = LabelName;
         type = text;
         this.maxLenght = maxLenght;

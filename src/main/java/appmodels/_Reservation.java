@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by shyshkin_vlad on 22.04.16.
  */
-public class reservation implements Serializable {
+public class _Reservation implements Serializable {
     private int id;
     private int cafeId;
     private String clientName;
@@ -18,7 +18,7 @@ public class reservation implements Serializable {
     private int amountPeople;
     private String description;
 
-    public reservation(int id, int cafeId, String clientName, String clientPhone, Date rDate, Time rTime, String confirmORnot, int amountPeople, String description) {
+    public _Reservation(int id, int cafeId, String clientName, String clientPhone, Date rDate, Time rTime, String confirmORnot, int amountPeople, String description) {
         this.id = id;
         this.cafeId = cafeId;
         this.clientName = clientName;

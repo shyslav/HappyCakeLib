@@ -17,8 +17,8 @@ public class NewsStorage extends HashMap<Integer, News> {
     }
 
     /**
-     * Get 3 popular news
-     * @return arraylist of popular news
+     * Get 3 popular _News
+     * @return arraylist of popular _News
      */
     public ArrayList<News> getPopular() {
         ArrayList<News> result = new ArrayList();
@@ -46,7 +46,7 @@ public class NewsStorage extends HashMap<Integer, News> {
 
     /**
      *  Get map by arraylist
-     * @return arrylist of news
+     * @return arrylist of _News
      */
     public ArrayList getByArray(){
         return new ArrayList(this.values());
@@ -67,9 +67,9 @@ public class NewsStorage extends HashMap<Integer, News> {
     }
 
     /**
-     * Get news by id
-     * @param id id news
-     * @return arraylist of news
+     * Get _News by id
+     * @param id id _News
+     * @return arraylist of _News
      */
     public ArrayList<News> getById(int id){
         ArrayList result = new ArrayList();

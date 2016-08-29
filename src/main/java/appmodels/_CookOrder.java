@@ -7,16 +7,16 @@ import java.util.ArrayList;
 /**
  * Created by Shyshkin Vladyslav on 25.05.2016.
  */
-public class CookOrder implements Serializable {
+public class _CookOrder implements Serializable {
     private int orderID;
     private int employeeID;
     private String employeeFIO;
     private double fullPrice;
     private Timestamp odate;
     private String compliteORnot;
-    private ArrayList<orderListCook> orderListCooks;
+    private ArrayList<_OrderListCook> orderListCooks;
 
-    public CookOrder(int orderID, int employeeID, String employeeFIO, double fullPrice, Timestamp odate, String compliteORnot, ArrayList<orderListCook> orderListCooks) {
+    public _CookOrder(int orderID, int employeeID, String employeeFIO, double fullPrice, Timestamp odate, String compliteORnot, ArrayList<_OrderListCook> orderListCooks) {
         this.orderID = orderID;
         this.employeeID = employeeID;
         this.employeeFIO = employeeFIO;
@@ -74,11 +74,11 @@ public class CookOrder implements Serializable {
         this.compliteORnot = compliteORnot;
     }
 
-    public ArrayList<orderListCook> getOrderListCooks() {
+    public ArrayList<_OrderListCook> getOrderListCooks() {
         return orderListCooks;
     }
 
-    public void setOrderListCooks(ArrayList<orderListCook> orderListCooks) {
+    public void setOrderListCooks(ArrayList<_OrderListCook> orderListCooks) {
         this.orderListCooks = orderListCooks;
     }
 }

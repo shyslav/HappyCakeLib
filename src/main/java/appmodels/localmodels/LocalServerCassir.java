@@ -1,4 +1,6 @@
-package appmodels;
+package appmodels.localmodels;
+
+import appmodels._Dish;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,15 +8,15 @@ import java.util.ArrayList;
 /**
  * Created by Shyshkin Vladyslav on 23.05.2016.
  */
-public class _Cassir implements Serializable {
+public class LocalServerCassir implements Serializable {
     private int id;
     private String name;
     private String description;
     private String image;
-    ArrayList<dish> dish;
+    ArrayList<_Dish> dish;
 
 
-    public _Cassir(int id, String name, String description, String image, ArrayList<dish> dish) {
+    public LocalServerCassir(int id, String name, String description, String image, ArrayList<_Dish> dish) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -54,11 +56,11 @@ public class _Cassir implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<dish> getDish() {
+    public ArrayList<_Dish> getDish() {
         return dish;
     }
 
-    public void setDish(ArrayList<dish> dish) {
+    public void setDish(ArrayList<_Dish> dish) {
         this.dish = dish;
     }
 }

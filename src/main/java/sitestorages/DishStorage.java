@@ -18,10 +18,10 @@ public class DishStorage extends ArrayList<Dish> {
         return super.add(dish);
     }
     /**
-     * Get all dish by category id
+     * Get all _Dish by _Category id
      *
-     * @param id category id
-     * @return dish list
+     * @param id _Category id
+     * @return _Dish list
      */
     public ArrayList<Dish> getByCategoryId(int id) {
         ArrayList<Dish> result = new ArrayList();
@@ -35,8 +35,8 @@ public class DishStorage extends ArrayList<Dish> {
 
     /**
      * Get arrayelement by id
-     * @param id category id
-     * @return category object
+     * @param id _Category id
+     * @return _Category object
      */
     public Dish getById(int id){
         return map.get(id);

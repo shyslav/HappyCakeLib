@@ -5,14 +5,14 @@ import java.io.Serializable;
 /**
  * Created by shyshkin_vlad on 22.04.16.
  */
-public class orders implements Serializable{
+public class _Order implements Serializable{
     private int id;
     private int employeeId;
     private double fullPrice;
     private String orderDate;
     private String compliteOrNot;
 
-    public orders(int id, int employeeId, double fullPrice, String orderDate, String compliteOrNot) {
+    public _Order(int id, int employeeId, double fullPrice, String orderDate, String compliteOrNot) {
         this.id = id;
         this.employeeId = employeeId;
         this.fullPrice = fullPrice;

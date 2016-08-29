@@ -2,7 +2,7 @@ package appmodels;
 
 import java.io.Serializable;
 
-public class orderListCook implements Serializable
+public class _OrderListCook implements Serializable
 {
     private int id;
     private int dishID;
@@ -13,7 +13,7 @@ public class orderListCook implements Serializable
     private int amount;
     private double price;
 
-    public orderListCook(int id, int dishID, String dishName, int dishAmount, String dishImage, String dishReadyORnot, int amount, double price) {
+    public _OrderListCook(int id, int dishID, String dishName, int dishAmount, String dishImage, String dishReadyORnot, int amount, double price) {
         this.id = id;
         this.dishID = dishID;
         this.dishName = dishName;

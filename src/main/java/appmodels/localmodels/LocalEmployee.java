@@ -1,11 +1,11 @@
-package appmodels;
+package appmodels.localmodels;
 
 import java.util.Date;
 
 /**
  * Created by Shyshkin Vladyslav on 28.03.2016.
  */
-public class jEmployees {
+public class LocalEmployee {
     private int id;
     private String positionID;
     private String cafeID;
@@ -14,7 +14,7 @@ public class jEmployees {
     private String address;
     private Date birthdayDay;
 
-    public jEmployees(int id, String positionID, String cafeID, String name, String lastname, String address, Date birthdayDay) {
+    public LocalEmployee(int id, String positionID, String cafeID, String name, String lastname, String address, Date birthdayDay) {
         this.id = id;
         this.positionID = positionID;
         this.cafeID = cafeID;

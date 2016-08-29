@@ -20,7 +20,7 @@ public class CategoryStorage extends ArrayList<Category> {
     }
 
     /**
-     * Get rand category
+     * Get rand _Category
      *
      * @return arraylist of new rand categoryes
      */
@@ -60,8 +60,8 @@ public class CategoryStorage extends ArrayList<Category> {
 
     /**
      * Get arrayelement by id
-     * @param id category id
-     * @return category object
+     * @param id _Category id
+     * @return _Category object
      */
     public Category getById(int id){
         return map.get(id);

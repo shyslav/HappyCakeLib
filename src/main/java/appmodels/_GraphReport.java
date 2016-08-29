@@ -5,11 +5,11 @@ import java.io.Serializable;
 /**
  * Created by Shyshkin Vladyslav on 23.05.2016.
  */
-public class ReportsGraph implements Serializable{
+public class _GraphReport implements Serializable{
     private String name;
     private int amount;
 
-    public ReportsGraph(String name, int amount) {
+    public _GraphReport(String name, int amount) {
         this.name = name;
         this.amount = amount;
     }
