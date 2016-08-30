@@ -3,21 +3,26 @@ package database.select;
 
 import database.configuration.DatabaseConnection;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import sitemodels.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SelectCommand {
+    private static final Logger log = Logger.getLogger(SelectCommand.class.getName());
+
     private static DatabaseConnection db = new DatabaseConnection();
 
     /**
-     * Получить меню сайта
+     * Action to get web menu from database
      *
-     * @return
-     * @throws SQLException
+     * @return web menu arraylist
+     * @
      */
-    protected ArrayList<WebMenu> selectWebMenu() throws SQLException {
+    protected ArrayList<WebMenu> selectWebMenu() {
+        log.info("try to select webmenu");
         ArrayList<WebMenu> result = new ArrayList();
         String query = "select * from webmenu order by menusort";
         db.openConnection();
@@ -30,17 +35,21 @@ public class SelectCommand {
                         db.rs.getString("link"),
                         db.rs.getInt("menusort")));
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            log.error("execute query error" + ex);
         } finally {
             db.closeConnection();
-            db.rs.close();
-            db.st.close();
         }
         return result;
     }
 
+    /**
+     * action to get max id from reservation
+     *
+     * @return max id
+     */
     public static int selectMaxFromReservation() {
+        log.info("try to select max from reservation");
         String query = "select max(id) from reservation";
         db.openConnection();
         int max = 1;
@@ -49,8 +58,8 @@ public class SelectCommand {
             while (db.rs.next()) {
                 max = db.rs.getInt(1);
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            log.error("execute query error" + ex);
         } finally {
             db.closeConnection();
         }
@@ -58,12 +67,13 @@ public class SelectCommand {
     }
 
     /**
-     * Получить координаты кафе
+     * Action to get all cafe coordination from database
      *
-     * @return
-     * @throws SQLException
+     * @return arraylist of cafe coordinate
+     * @
      */
-    protected ArrayList<CafeCoordinate> selectCafeCoordinate() throws SQLException {
+    protected ArrayList<CafeCoordinate> selectCafeCoordinate() {
+        log.info("try to select cafe coordinate");
         ArrayList<CafeCoordinate> result = new ArrayList();
         String query = "select * from cafecoordinate";
         db.openConnection();
@@ -76,23 +86,22 @@ public class SelectCommand {
                         db.rs.getString("mobilePhone"),
                         db.rs.getString("cafeemail")));
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            log.error("execute query error" + ex);
         } finally {
             db.closeConnection();
-            db.rs.close();
-            db.st.close();
         }
         return result;
     }
 
     /**
-     * Получить категории кафе
+     * Action to get all cafe categories from database
      *
-     * @return
-     * @throws SQLException
+     * @return arraylist of categories
+     * @
      */
-    protected ArrayList<Category> selectCategory() throws SQLException {
+    protected ArrayList<Category> selectCategory() {
+        log.info("try to select ALL category");
         ArrayList<Category> result = new ArrayList();
         String query = "select * from category";
         db.openConnection();
@@ -105,33 +114,23 @@ public class SelectCommand {
                         db.rs.getString("description"),
                         IOUtils.toByteArray(db.rs.getBinaryStream("image"))));
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (IOException | SQLException ex) {
+            log.error("execute query error" + ex);
         } finally {
             db.closeConnection();
-            db.rs.close();
-            db.st.close();
         }
         return result;
     }
 
     /**
-     * Получить блюда в категории
+     * Action to get dish from database
      *
-     * @param category
-     * @return
-     * @throws SQLException
+     * @return array list of dish
      */
-    protected ArrayList<Dish> selectdish(int category) throws SQLException {
+    protected ArrayList<Dish> selectdish() {
+        log.info("try to select ALL dish");
         ArrayList<Dish> result = new ArrayList();
-        String query = new String();
-        switch (category) {
-            case 0:
-                query = "select id as idfromdish, categoryID, name, description, amount, price, image, readyORnot, (select percent from hotprice where dishID = idfromdish and dateEnd>=curdate() ) as sell from dish";
-                break;
-            default:
-                query = "select id as idfromdish, categoryID, name, description, amount, price, image, readyORnot, (select percent from hotprice where dishID = idfromdish and dateEnd>=curdate() ) as sell from dish  where categoryID = " + category;
-        }
+        String query = "select id as idfromdish, categoryID, name, description, amount, price, image, readyORnot, (select percent from hotprice where dishID = idfromdish and dateEnd>=curdate() ) as sell from dish";
         db.openConnection();
         try {
             db.rs = db.st.executeQuery(query);
@@ -147,23 +146,22 @@ public class SelectCommand {
                         db.rs.getString("readyORnot").trim(),
                         db.rs.getString("sell")));
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (IOException | SQLException ex) {
+            log.error("execute query error" + ex);
         } finally {
             db.closeConnection();
-            db.rs.close();
-            db.st.close();
         }
         return result;
     }
 
     /**
-     * Получить Все новости (-1) Получить лучшие 3 новости (-2) Получить носоть по ид (0...id)
+     * Action to get all site news from database
      *
-     * @return
-     * @throws SQLException
+     * @return arraylist of news
+     * @
      */
-    protected ArrayList<News> selectNews() throws SQLException {
+    protected ArrayList<News> selectNews() {
+        log.info("try to select ALL news");
         ArrayList<News> result = new ArrayList();
         String query = "select * from news";
         db.openConnection();
@@ -180,23 +178,22 @@ public class SelectCommand {
                         db.rs.getInt("views"),
                         db.rs.getString("imageLink")));
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            log.error("execute query error" + ex);
         } finally {
             db.closeConnection();
-            db.rs.close();
-            db.st.close();
         }
         return result;
     }
 
     /**
-     * Получить отзывы
+     * Action to get reports from database
      *
-     * @return
-     * @throws SQLException
+     * @return arraylist of reports
+     * @
      */
-    protected ArrayList<Reports> selectReports() throws SQLException {
+    protected ArrayList<Reports> selectReports() {
+        log.info("try to select ALL reports");
         ArrayList<Reports> result = new ArrayList();
         String query = "select * from reports where vision = '+'";
         db.openConnection();
@@ -211,23 +208,22 @@ public class SelectCommand {
                         db.rs.getString("phone"),
                         db.rs.getString("vision")));
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            log.error("execute query error" + ex);
         } finally {
             db.closeConnection();
-            db.rs.close();
-            db.st.close();
         }
         return result;
     }
 
     /**
-     * Получить хотпрайсы
+     * Action to get hotprices from database
      *
-     * @return
-     * @throws SQLException
+     * @return arraylist of hotprice
+     * @
      */
-    protected ArrayList<HotPrice> selectHotPrice() throws SQLException {
+    protected ArrayList<HotPrice> selectHotPrice() {
+        log.info("try to select ALL hotprice");
         ArrayList<HotPrice> result = new ArrayList();
         String query = "select * from hotprice order by  dateStart desc, dateEnd DESC";
         db.openConnection();
@@ -241,12 +237,10 @@ public class SelectCommand {
                         db.rs.getDate("dateStart"),
                         db.rs.getDate("dateEnd")));
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            log.error("execute query error" + ex);
         } finally {
             db.closeConnection();
-            db.rs.close();
-            db.st.close();
         }
         return result;
     }

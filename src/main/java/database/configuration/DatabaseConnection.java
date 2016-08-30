@@ -1,11 +1,15 @@
 package database.configuration;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseConnection {
+    private static final Logger log = Logger.getLogger(DatabaseConnection.class.getName());
+
     private Connection con;
     public Statement st;
     public ResultSet rs;
@@ -18,9 +22,9 @@ public class DatabaseConnection {
         ClassLoader classLoader = getClass().getClassLoader();
         Properties props = new Properties();
         try (InputStream in = classLoader.getResourceAsStream("database/database.properties")) {
-        props.load(in);
+            props.load(in);
         } catch (IOException ex) {
-            System.out.println(ex);
+            log.error("cannot be read properties file" + ex);
         }
         try{
             Class.forName(props.getProperty("jdbc.drivers"));
@@ -29,7 +33,7 @@ public class DatabaseConnection {
         }
         catch(ClassNotFoundException | SQLException ex)
         {
-            System.out.println("Error"+ex);
+            log.error("open connection error"+ex);
         }
     }
 
@@ -43,13 +47,13 @@ public class DatabaseConnection {
         try (InputStream in = classLoader.getResourceAsStream("database/database.properties")) {
             props.load(in);
         } catch (IOException ex) {
-            System.out.println(ex);
+            log.error("cannot be read properties file" + ex);
         }
         try {
             Class.forName(props.getProperty("jdbc.drivers"));
             con = DriverManager.getConnection(props.getProperty("jdbc.url"),props.getProperty("jdbc.username"),props.getProperty("jdbc.password"));
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | SQLException ex) {
+            log.error("open connection error"+ex);
         }
         return con;
     }
@@ -59,7 +63,7 @@ public class DatabaseConnection {
         try {
             con.close();
         } catch (SQLException ex) {
-            System.out.println(ex);
+            log.error("close database connection error"+ex);
         }
     }
 }

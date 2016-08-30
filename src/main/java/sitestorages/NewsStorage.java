@@ -1,6 +1,7 @@
 package sitestorages;
 
 
+import org.apache.log4j.Logger;
 import sitemodels.News;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.List;
  * Created by Shyshkin Vladyslav on 18.08.2016.
  */
 public class NewsStorage extends HashMap<Integer, News> {
+    private static final Logger log = Logger.getLogger(NewsStorage.class.getName());
+
     @Override
     public News put(Integer key, News value) {
         return super.put(key, value);
@@ -21,6 +24,7 @@ public class NewsStorage extends HashMap<Integer, News> {
      * @return arraylist of popular _News
      */
     public ArrayList<News> getPopular() {
+        log.info("get 3 popular news");
         ArrayList<News> result = new ArrayList();
         List<News> listOfNews = new ArrayList(this.values());
         listOfNews.sort((e1, e2) -> e2.getView() - e1.getView());
@@ -35,6 +39,7 @@ public class NewsStorage extends HashMap<Integer, News> {
     }
 
     public ArrayList<News> getByTag(String teg){
+        log.info("get news by teg where teg = " + teg);
         ArrayList<News> result = new ArrayList();
         for (News element: this.values()){
             if(element.getTegs().contains(teg)){
@@ -57,6 +62,7 @@ public class NewsStorage extends HashMap<Integer, News> {
      * @return unique tags list
      */
     public ArrayList uniqueTagArray(){
+        log.info("get unique tag array");
         ArrayList result = new ArrayList();
         for (News element: this.values()){
             if(!result.contains(element.getTegs())){

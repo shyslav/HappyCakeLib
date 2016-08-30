@@ -1,6 +1,7 @@
 package database.insert;
 
 import database.configuration.DatabaseConnection;
+import org.apache.log4j.Logger;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -11,6 +12,8 @@ import java.sql.SQLException;
  * Created by Shyshkin Vladyslav on 05.05.2016.
  */
 public class DatabaseInsert {
+    private static final Logger log = Logger.getLogger(DatabaseInsert.class.getName());
+
     private static DatabaseConnection db = new DatabaseConnection();
 
     /**
@@ -22,13 +25,15 @@ public class DatabaseInsert {
      * @return result of query execute
      */
     public static String insert(String tableName, String[] values, String[] rows) {
+        log.info("try to insert to database to" + tableName);
         db.openConnection();
         String command = "insert into " + tableName + "(" + String.join(",", rows) + ") values ('" + String.join("','", values) + "')";
+        log.info(command);
         System.out.println(command);
         try {
             db.st.execute(command);
         } catch (SQLException ex) {
-            System.out.println(ex);
+            log.error("insert failed" + ex);
             return "Группа не добавлена по причине:" + ex;
         } finally {
             db.closeConnection();
@@ -45,9 +50,10 @@ public class DatabaseInsert {
      * @return result of query execute
      */
     public static boolean prepareInsert(String tableName, Object[] values, String[] rows) {
+        log.info("try to insert to database with Prepare Statement to" + tableName);
         Connection conn = db.getConnection();
-
         String command = "insert into " + tableName + "(" + String.join(",", rows) + ") values (" + generatePrepare(values.length) + ")";
+        log.info(command);
         try {
             PreparedStatement ps = conn.prepareStatement(command);
             for (int i = 0; i < values.length; i++) {
@@ -61,9 +67,10 @@ public class DatabaseInsert {
             }
             ps.execute();
         } catch (SQLException e) {
-            System.out.println("error" + e);
-            e.printStackTrace();
+            log.error("error insert to database" + e);
             return false;
+        } finally {
+            db.closeConnection();
         }
         return true;
     }

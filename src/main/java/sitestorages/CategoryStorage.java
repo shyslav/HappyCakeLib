@@ -1,5 +1,6 @@
 package sitestorages;
 
+import org.apache.log4j.Logger;
 import sitemodels.*;
 
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.Random;
  * Created by Shyshkin Vladyslav on 19.08.2016.
  */
 public class CategoryStorage extends ArrayList<Category> {
+    private static final Logger log = Logger.getLogger(CategoryStorage.class.getName());
+
     private HashMap<Integer,Category> map = new HashMap();
     private final int RANDOM_ELEMENTS_ON_PAGE = 3;
 
@@ -20,11 +23,12 @@ public class CategoryStorage extends ArrayList<Category> {
     }
 
     /**
-     * Get rand _Category
+     * Get RANDOM_ELEMENTS_ON_PAGE rand categories
      *
      * @return arraylist of new rand categoryes
      */
     public ArrayList getRand() {
+        log.info("get "+RANDOM_ELEMENTS_ON_PAGE+" rand categories");
         Random random = new Random();
         int mas[] = new int[3];
         int i = 0;
