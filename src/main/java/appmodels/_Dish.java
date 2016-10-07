@@ -12,11 +12,11 @@ public class _Dish implements Serializable {
     private String description;
     private int amount;
     private double price;
-    private String image;
+    private byte[] image;
     private String readyORnot;
     private String sell;
 
-    public _Dish(int id, int categoryId, String name, String description, int amount, double price, String image, String readyORnot, String sell) {
+    public _Dish(int id, int categoryId, String name, String description, int amount, double price, byte[] image, String readyORnot, String sell) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
@@ -84,11 +84,11 @@ public class _Dish implements Serializable {
         this.price = price;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
