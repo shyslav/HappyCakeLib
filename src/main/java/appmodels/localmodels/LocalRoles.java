@@ -1,7 +1,11 @@
 package appmodels.localmodels;
 
 /**
- * Created by Shyshkin Vladyslav on 19.05.2016.
+ * @author Shyshkin Vladyslav on 19.05.2016.
+ */
+
+/**
+ * Current class contains mysql rules
  */
 public class LocalRoles {
     private String labelName;
