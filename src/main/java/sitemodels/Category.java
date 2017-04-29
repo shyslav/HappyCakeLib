@@ -1,15 +1,27 @@
 package sitemodels;
 
-/**
- * Created by shyshkin_vlad on 22.04.16.
- */
-public class Category {
-    private int id;
-    private String name;
-    private String description;
-    private byte [] image;
+import com.shyslav.mysql.annotations.DBField;
+import com.shyslav.mysql.annotations.DBModel;
+import com.shyslav.mysql.interfaces.DBEntity;
 
-    public Category(int id, String name, String description, byte [] image) {
+/**
+ * @author Shyshkin Vladyslav on 22.04.16.
+ */
+@DBModel(tableName = "category")
+public class Category implements DBEntity {
+    @DBField(fieldName = "id", isAutoIncrement = true)
+    private int id;
+    @DBField(fieldName = "name")
+    private String name;
+    @DBField(fieldName = "description")
+    private String description;
+    @DBField(fieldName = "image")
+    private byte[] image;
+
+    public Category() {
+    }
+
+    public Category(int id, String name, String description, byte[] image) {
         this.id = id;
         this.name = name;
         this.description = description;

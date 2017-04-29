@@ -1,19 +1,38 @@
 package sitemodels;
 
+import com.shyslav.mysql.annotations.DBField;
+import com.shyslav.mysql.annotations.DBModel;
+import com.shyslav.mysql.interfaces.DBEntity;
+import com.shyslav.utils.LazyDate;
+
 import java.util.Date;
 
 /**
- * Created by shyshkin_vlad on 22.04.16.
+ * @author Shyshkin Vladyslav on 22.04.16.
  */
-public class HotPrice {
+@DBModel(tableName = "hotprice")
+public class HotPrice implements DBEntity {
+    @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+    @DBField(fieldName = "id_dish")
     private int dishId;
-    private int percent;
-    private String description;
-    private Date dateStart;
-    private Date dateEnd;
 
-    public HotPrice(int id, int dishId, int percent, String description, Date dateStart, Date dateEnd) {
+    @DBField(fieldName = "percent")
+    private int percent;
+
+    @DBField(fieldName = "description")
+    private String description;
+
+    @DBField(fieldName = "dateStart")
+    private int dateStart;
+
+    @DBField(fieldName = "dateEnd")
+    private int dateEnd;
+
+    public HotPrice() {
+    }
+
+    public HotPrice(int id, int dishId, int percent, String description, int dateStart, int dateEnd) {
         this.id = id;
         this.dishId = dishId;
         this.percent = percent;
@@ -55,18 +74,18 @@ public class HotPrice {
     }
 
     public Date getDateStart() {
-        return dateStart;
+        return LazyDate.getDateFromUnixTimeStaimp(dateStart);
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(int dateStart) {
         this.dateStart = dateStart;
     }
 
     public Date getDateEnd() {
-        return dateEnd;
+        return LazyDate.getDateFromUnixTimeStaimp(dateEnd);
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(int dateEnd) {
         this.dateEnd = dateEnd;
     }
 }

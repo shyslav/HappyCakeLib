@@ -1,20 +1,37 @@
 package sitemodels;
 
-/**
- * Created by shyshkin_vlad on 22.04.16.
- */
-public class Dish {
-    private int id;
-    private int categoryId;
-    private String name;
-    private String description;
-    private int amount;
-    private double price;
-    private byte [] image;
-    private String readyORnot;
-    private String sell;
+import com.shyslav.mysql.annotations.DBField;
+import com.shyslav.mysql.annotations.DBModel;
+import com.shyslav.mysql.interfaces.DBEntity;
 
-    public Dish(int id, int categoryId, String name, String description, int amount, double price, byte[] image, String readyORnot, String sell) {
+/**
+ * @author Shyshkin Vladyslav on 22.04.16.
+ */
+@DBModel(tableName = "dish")
+public class Dish implements DBEntity {
+    @DBField(fieldName = "id", isAutoIncrement = true)
+    private int id;
+    @DBField(fieldName = "id_category")
+    private int categoryId;
+    @DBField(fieldName = "name")
+    private String name;
+    @DBField(fieldName = "description")
+    private String description;
+    @DBField(fieldName = "amount")
+    private int amount;
+    @DBField(fieldName = "price")
+    private double price;
+    @DBField(fieldName = "image")
+    private byte[] image;
+    @DBField(fieldName = "readyOrNot")
+    private String readyORnot;
+
+    private int discount;
+
+    public Dish() {
+    }
+
+    public Dish(int id, int categoryId, String name, String description, int amount, double price, byte[] image, String readyORnot) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
@@ -23,15 +40,6 @@ public class Dish {
         this.price = price;
         this.image = image;
         this.readyORnot = readyORnot;
-        this.sell = sell;
-    }
-
-    public String getSell() {
-        return sell;
-    }
-
-    public void setSell(String sell) {
-        this.sell = sell;
     }
 
     public int getId() {
@@ -96,5 +104,13 @@ public class Dish {
 
     public void setReadyORnot(String readyORnot) {
         this.readyORnot = readyORnot;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 }

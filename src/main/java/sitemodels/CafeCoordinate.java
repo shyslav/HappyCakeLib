@@ -1,19 +1,31 @@
 package sitemodels;
 
+import com.shyslav.mysql.annotations.DBField;
+import com.shyslav.mysql.annotations.DBModel;
+import com.shyslav.mysql.interfaces.DBEntity;
+
 /**
- * Created by shyshkin_vlad on 22.04.16.
+ * @author Shyshkin Vladyslav on 22.04.16.
  */
-public class CafeCoordinate {
+@DBModel(tableName = "cafecoordinate")
+public class CafeCoordinate implements DBEntity {
+    @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+    @DBField(fieldName = "address")
     private String address;
+    @DBField(fieldName = "mobile_phone")
     private String mobilePhone;
-    private String cafeemail;
+    @DBField(fieldName = "cafe_mail")
+    private String email;
+
+    public CafeCoordinate() {
+    }
 
     public CafeCoordinate(int id, String address, String mobilePhone, String cafeemail) {
         this.id = id;
         this.address = address;
         this.mobilePhone = mobilePhone;
-        this.cafeemail = cafeemail;
+        this.email = cafeemail;
     }
 
     public int getId() {
@@ -40,11 +52,11 @@ public class CafeCoordinate {
         this.mobilePhone = mobilePhone;
     }
 
-    public String getCafeemail() {
-        return cafeemail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCafeemail(String cafeemail) {
-        this.cafeemail = cafeemail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

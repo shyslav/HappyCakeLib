@@ -1,35 +1,62 @@
 package sitemodels;
 
-import java.util.Date;
+import com.shyslav.mysql.annotations.DBField;
+import com.shyslav.mysql.annotations.DBModel;
+import com.shyslav.mysql.interfaces.DBEntity;
 
 /**
- * Created by Shyshkin Vladyslav on 05.05.2016.
+ * @author Shyshkin Vladyslav on 05.05.2016.
  */
-public class Reports {
+@DBModel(tableName = "reports")
+public class Reports implements DBEntity {
+    @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+    @DBField(fieldName = "author")
     private String author;
-    private String rText;
-    private Date rDate;
+    @DBField(fieldName = "text")
+    private String text;
+    @DBField(fieldName = "date")
+    private int date;
+    @DBField(fieldName = "mail")
     private String mail;
+    @DBField(fieldName = "phone")
     private String phone;
-    private String vision;
+    @DBField(fieldName = "vision")
+    private boolean vision;
 
-    public Reports(int id, String author, String rText, Date rDate, String mail, String phone, String vision) {
+    public Reports() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
         this.author = author;
-        this.rText = rText;
-        this.rDate = rDate;
-        this.mail = mail;
-        this.phone = phone;
-        this.vision = vision;
     }
 
-    public String getVision() {
-        return vision;
+    public String getText() {
+        return text;
     }
 
-    public void setVision(String vision) {
-        this.vision = vision;
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
     }
 
     public String getMail() {
@@ -48,35 +75,24 @@ public class Reports {
         this.phone = phone;
     }
 
-    public String getAuthor() {
-        return author;
+    public boolean isVision() {
+        return vision;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setVision(boolean vision) {
+        this.vision = vision;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getrText() {
-        return rText;
-    }
-
-    public void setrText(String rText) {
-        this.rText = rText;
-    }
-
-    public Date getrDate() {
-        return rDate;
-    }
-
-    public void setrDate(Date rDate) {
-        this.rDate = rDate;
+    @Override
+    public String toString() {
+        return "Reports{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", mail='" + mail + '\'' +
+                ", phone='" + phone + '\'' +
+                ", vision=" + vision +
+                '}';
     }
 }

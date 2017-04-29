@@ -1,32 +1,32 @@
 package sitemodels;
 
-import java.sql.Time;
-import java.util.Date;
+import com.shyslav.mysql.annotations.DBField;
+import com.shyslav.mysql.annotations.DBModel;
+import com.shyslav.mysql.interfaces.DBEntity;
 
 /**
- * Created by shyshkin_vlad on 22.04.16.
+ * @author Shyshkin Vladyslav on 22.04.16.
  */
-public class Reservation {
+@DBModel(tableName = "reservation")
+public class Reservation implements DBEntity {
+    @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+    @DBField(fieldName = "id_cafe")
     private int cafeId;
+    @DBField(fieldName = "client_name")
     private String clientName;
+    @DBField(fieldName = "client_phone")
     private String clientPhone;
-    private Date rDate;
-    private Time rTime;
-    private String confirmORnot;
+    @DBField(fieldName = "date")
+    private int date;
+    @DBField(fieldName = "confirm")
+    private boolean confirm;
+    @DBField(fieldName = "amount_peoples")
     private int amountPeople;
+    @DBField(fieldName = "description")
     private String description;
 
-    public Reservation(int id, int cafeId, String clientName, String clientPhone, Date rDate, Time rTime, String confirmORnot, int amountPeople, String description) {
-        this.id = id;
-        this.cafeId = cafeId;
-        this.clientName = clientName;
-        this.clientPhone = clientPhone;
-        this.rDate = rDate;
-        this.rTime = rTime;
-        this.confirmORnot = confirmORnot;
-        this.amountPeople = amountPeople;
-        this.description = description;
+    public Reservation() {
     }
 
     public String getDescription() {
@@ -69,28 +69,12 @@ public class Reservation {
         this.clientPhone = clientPhone;
     }
 
-    public Date getrDate() {
-        return rDate;
+    public boolean isConfirm() {
+        return confirm;
     }
 
-    public void setrDate(Date rDate) {
-        this.rDate = rDate;
-    }
-
-    public Time getrTime() {
-        return rTime;
-    }
-
-    public void setrTime(Time rTime) {
-        this.rTime = rTime;
-    }
-
-    public String isConfirmORnot() {
-        return confirmORnot;
-    }
-
-    public void setConfirmORnot(String confirmORnot) {
-        this.confirmORnot = confirmORnot;
+    public void setConfirm(boolean confirm) {
+        this.confirm = confirm;
     }
 
     public int getAmountPeople() {
@@ -99,5 +83,27 @@ public class Reservation {
 
     public void setAmountPeople(int amountPeople) {
         this.amountPeople = amountPeople;
+    }
+
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", cafeId=" + cafeId +
+                ", clientName='" + clientName + '\'' +
+                ", clientPhone='" + clientPhone + '\'' +
+                ", date=" + date +
+                ", confirm=" + confirm +
+                ", amountPeople=" + amountPeople +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

@@ -1,29 +1,39 @@
 package sitemodels;
 
+import com.shyslav.mysql.annotations.DBField;
+import com.shyslav.mysql.annotations.DBModel;
+import com.shyslav.mysql.interfaces.DBEntity;
+import com.shyslav.utils.LazyDate;
+
 import java.util.Date;
 
 /**
- * Created by Shyshkin Vladyslav on 28.03.2016.
+ * @author Shyshkin Vladyslav on 28.03.2016.
  */
-public class News {
+@DBModel(tableName = "news")
+public class News implements DBEntity {
+    @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+    @DBField(fieldName = "id_author")
     private int authorID;
+    @DBField(fieldName = "name")
     private String name;
+    @DBField(fieldName = "text")
     private String text;
-    private Date date;
-    private String tegs;
+    @DBField(fieldName = "date")
+    private int date;
+    @DBField(fieldName = "tags")
+    private String tags;
+    @DBField(fieldName = "views")
     private int view;
+    @DBField(fieldName = "image_link")
     private String imageLink;
 
-    public News(int id, int authorID, String name, String nText, Date nDate, String tegs, int view, String imageLink) {
-        this.id = id;
-        this.authorID = authorID;
-        this.name = name;
-        this.text = nText;
-        this.date = nDate;
-        this.tegs = tegs;
-        this.view = view;
-        this.imageLink = imageLink;
+    public News() {
+    }
+
+    public void increaseViews() {
+        view++;
     }
 
     public String getName() {
@@ -59,19 +69,19 @@ public class News {
     }
 
     public Date getDate() {
-        return date;
+        return LazyDate.getDateFromUnixTimeStaimp(date);
     }
 
-    public void setDate(Date date) {
+    public void setDate(int date) {
         this.date = date;
     }
 
-    public String getTegs() {
-        return tegs;
+    public String getTags() {
+        return tags;
     }
 
-    public void setTegs(String tegs) {
-        this.tegs = tegs;
+    public void setTegs(String tags) {
+        this.tags = tags;
     }
 
     public int getView() {
