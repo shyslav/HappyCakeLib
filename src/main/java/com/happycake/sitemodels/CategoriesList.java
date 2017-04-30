@@ -1,4 +1,4 @@
-package sitemodels;
+package com.happycake.sitemodels;
 
 import java.util.ArrayList;
 import java.util.HashMap;

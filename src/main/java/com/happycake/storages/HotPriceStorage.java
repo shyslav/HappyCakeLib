@@ -1,11 +1,9 @@
-package storages;
+package com.happycake.storages;
 
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.exceptions.DBException;
-import com.shyslav.mysql.interfaces.DBEntity;
-import sitemodels.HotPrice;
-import sitemodels.WebMenu;
+import com.happycake.sitemodels.HotPrice;
 
 /**
  * @author Shyshkin Vladyslav on 29.04.17.

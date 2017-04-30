@@ -1,14 +1,9 @@
-package storages;
+package com.happycake.storages;
 
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
-import com.shyslav.mysql.connectionpool.MysqlConnection;
 import com.shyslav.mysql.exceptions.DBException;
-import sitemodels.PreOrder;
-import sitemodels.Reservation;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.happycake.sitemodels.PreOrder;
 
 /**
  * @author Shyshkin Vladyslav on 29.04.17.

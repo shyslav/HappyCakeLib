@@ -1,4 +1,4 @@
-package sitemodels;
+package com.happycake.sitemodels;
 
 /**
  * Created by Shyshkin Vladyslav on 07.05.2016.

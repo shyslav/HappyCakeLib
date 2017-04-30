@@ -1,4 +1,4 @@
-package sitemodels;
+package com.happycake.sitemodels;
 
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;

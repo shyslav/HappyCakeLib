@@ -1,11 +1,10 @@
-package storages;
+package com.happycake.storages;
 
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.exceptions.DBException;
 import com.shyslav.mysql.interfaces.DBEntity;
-import sitemodels.Reports;
-import sitemodels.WebMenu;
+import com.happycake.sitemodels.Reports;
 
 import java.util.ArrayList;
 

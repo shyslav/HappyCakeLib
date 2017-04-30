@@ -1,10 +1,9 @@
-package storages;
+package com.happycake.storages;
 
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.exceptions.DBException;
-import sitemodels.Category;
-import sitemodels.Dish;
+import com.happycake.sitemodels.Dish;
 
 /**
  * @author Shyshkin Vladyslav on 29.04.17.
