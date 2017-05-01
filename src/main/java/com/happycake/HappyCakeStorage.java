@@ -1,5 +1,7 @@
 package com.happycake;
 
+import com.happycake.sitemodels.Order;
+import com.happycake.sitemodels.OrderDetails;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.driver.DBSpringDriver;
 import com.shyslav.mysql.exceptions.DBException;
@@ -56,6 +58,22 @@ public class HappyCakeStorage {
     public ReportsStorage reportsStorage;
 
     /**
+     * Employees storage
+     */
+    public EmployeesStorage employeesStorage;
+
+    /**
+     * Positions storage
+     */
+    public PositionStorage positionStorage;
+
+    /**
+     * Orders storage
+     */
+    public OrderStorage orderStorage;
+    public OrderDetailsStorage orderDetailsStorage;
+
+    /**
      * Constructor
      */
     public HappyCakeStorage() {
@@ -86,5 +104,13 @@ public class HappyCakeStorage {
         this.reservationStorage = new ReservationStorage(pool);
         this.preOrderStorage = new PreOrderStorage(pool);
         this.reportsStorage = new ReportsStorage(pool);
+        this.employeesStorage = new EmployeesStorage(pool);
+        this.positionStorage = new PositionStorage(pool);
+        this.orderDetailsStorage = new OrderDetailsStorage(pool);
+        this.orderStorage = new OrderStorage(pool, orderDetailsStorage);
+    }
+
+    public ConnectionPool getPool() {
+        return pool;
     }
 }
