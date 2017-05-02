@@ -7,6 +7,9 @@ import com.happycake.sitemodels.Position;
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.exceptions.DBException;
+import com.shyslav.mysql.interfaces.DBEntity;
+
+import java.util.ArrayList;
 
 /**
  * @author Shyshkin Vladyslav on 29.04.17.
@@ -30,5 +33,19 @@ public class OrderStorage extends DBStorage {
             order.setOrderDetails(orderDetailsStorage.getByOrderID(order.getId()));
         }
         return list;
+    }
+
+    /**
+     * Save order with details
+     *
+     * @param order order entity
+     * @throws DBException
+     */
+    public void saveOrderWithDetails(Order order) throws DBException {
+        long newID = saveAndGetLastInsertID(order);
+        for (OrderDetails details : order.getOrderDetails()) {
+            details.setOrderId((int) newID);
+            orderDetailsStorage.save(details);
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.happycake.sitemodels;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
+import com.shyslav.utils.LazyDate;
 
 /**
  * @author Shyshkin Vladyslav on 22.04.16.
@@ -23,6 +24,9 @@ public class Order implements DBEntity {
     private OrderDetailsList orderDetails;
 
     public Order() {
+        this.id = 0;
+        this.complite = false;
+        this.date = LazyDate.getUnixDate();
         this.orderDetails = new OrderDetailsList();
     }
 

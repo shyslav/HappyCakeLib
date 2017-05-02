@@ -21,6 +21,7 @@ public class OrderDetails implements DBEntity {
     private double price;
 
     public OrderDetails() {
+        this.id = 0;
     }
 
     public int getId() {
