@@ -23,6 +23,18 @@ public class OrderStorage extends DBStorage {
     }
 
     /**
+     * Delete order and order details by id
+     *
+     * @param id entity id
+     * @throws DBException
+     */
+    @Override
+    public void deleteByID(int id) throws DBException {
+        orderDetailsStorage.deleteByOrderID(id);
+        super.deleteByID(id);
+    }
+
+    /**
      * Add to order details
      *
      * @param list list of orders

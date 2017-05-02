@@ -23,15 +23,16 @@ public class Dish implements DBEntity {
     private double price;
     @DBField(fieldName = "image")
     private byte[] image;
-    @DBField(fieldName = "readyOrNot")
-    private String readyORnot;
+    @DBField(fieldName = "need_cook")
+    private boolean needCook;
 
     private int discount;
 
     public Dish() {
+        this.needCook = false;
     }
 
-    public Dish(int id, int categoryId, String name, String description, int amount, double price, byte[] image, String readyORnot) {
+    public Dish(int id, int categoryId, String name, String description, int amount, double price, byte[] image, Boolean needCook) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
@@ -39,7 +40,7 @@ public class Dish implements DBEntity {
         this.amount = amount;
         this.price = price;
         this.image = image;
-        this.readyORnot = readyORnot;
+        this.needCook = needCook;
     }
 
     public int getId() {
@@ -98,12 +99,12 @@ public class Dish implements DBEntity {
         this.image = image;
     }
 
-    public String getReadyORnot() {
-        return readyORnot;
+    public boolean isNeedCook() {
+        return needCook;
     }
 
-    public void setReadyORnot(String readyORnot) {
-        this.readyORnot = readyORnot;
+    public void setNeedCook(boolean needCook) {
+        this.needCook = needCook;
     }
 
     public int getDiscount() {

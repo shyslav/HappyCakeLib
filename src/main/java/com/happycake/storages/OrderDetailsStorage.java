@@ -33,4 +33,14 @@ public class OrderDetailsStorage extends DBStorage {
         }
         return list;
     }
+
+    /**
+     * Delete order details by order id
+     *
+     * @param id order id
+     * @throws DBException
+     */
+    public void deleteByOrderID(int id) throws DBException {
+        entityInitializer.delete.where("id_order", id).execute();
+    }
 }

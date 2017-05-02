@@ -31,6 +31,7 @@ public class News implements DBEntity {
 
     public News() {
         this.id = 0;
+        this.date = LazyDate.getUnixDate();
         this.view = 0;
         this.imageLink = "";
     }

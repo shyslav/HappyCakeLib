@@ -3,6 +3,7 @@ package com.happycake.sitemodels;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
+import com.shyslav.utils.LazyDate;
 
 /**
  * @author Shyshkin Vladyslav on 05.05.2016.
@@ -25,6 +26,8 @@ public class Reports implements DBEntity {
     private boolean vision;
 
     public Reports() {
+        this.date = LazyDate.getUnixDate();
+        this.vision = false;
     }
 
     public int getId() {
