@@ -30,6 +30,9 @@ public class News implements DBEntity {
     private String imageLink;
 
     public News() {
+        this.id = 0;
+        this.view = 0;
+        this.imageLink = "";
     }
 
     public void increaseViews() {

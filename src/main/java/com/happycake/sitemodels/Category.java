@@ -19,6 +19,7 @@ public class Category implements DBEntity {
     private byte[] image;
 
     public Category() {
+        this.id = 0;
     }
 
     public Category(int id, String name, String description, byte[] image) {

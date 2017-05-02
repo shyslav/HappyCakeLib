@@ -16,12 +16,26 @@ public class ReportsList extends ArrayList<Reports> {
     }
 
     /**
-     * Get News by id
+     * Get report by id
      *
      * @param id category id
      * @return category by id
      */
     public Reports getByID(int id) {
         return map.get(id);
+    }
+
+    /**
+     * Remove element by id
+     *
+     * @param id id of news
+     */
+    public void removeById(int id) {
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).getId() == id) {
+                map.remove(this.get(i).getId());
+                this.remove(i);
+            }
+        }
     }
 }

@@ -92,4 +92,18 @@ public class NewsList extends ArrayList<News> {
         }
         return list;
     }
+
+    /**
+     * Remove element by id
+     *
+     * @param id id of news
+     */
+    public void removeById(int id) {
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).getId() == id) {
+                map.remove(this.get(i).getId());
+                this.remove(i);
+            }
+        }
+    }
 }
