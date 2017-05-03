@@ -44,7 +44,7 @@ public @interface EditableField {
      *
      * @return if true can be null
      */
-    boolean canBeNull() default true;
+    boolean canBeNull() default false;
 
 
     /**
