@@ -15,21 +15,22 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID категории", minLength = 1, maxLength = 10)
+    @EditableField(name = "ID категории", pattern = "\\d{1,10}")
     @DBField(fieldName = "id_category")
     private int categoryId;
 
-    @EditableField(name = "Имя блюда", minLength = 1, maxLength = 10)
+    @EditableField(name = "Имя блюда", pattern = "^[a-zA-Z]{1,10}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "ID категории", minLength = 1, maxLength = 10)
+    @EditableField(name = "ID категории", pathToSelectClass = "com.shyslav")
     @DBField(fieldName = "description")
     private String description;
 
-
+    @EditableField(name = "Количество", pattern = "\\d{1,10}")
     @DBField(fieldName = "amount")
     private int amount;
+
     @DBField(fieldName = "price")
     private double price;
     @DBField(fieldName = "image")

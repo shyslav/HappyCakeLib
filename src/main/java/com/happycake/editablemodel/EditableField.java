@@ -23,23 +23,6 @@ public @interface EditableField {
 
 
     /**
-     * Minimum field length
-     *
-     * @return minimum length of field
-     */
-    @NotNull
-    int minLength() default 0;
-
-    /**
-     * Maximum length
-     *
-     * @return maximum length of field
-     */
-    @NotNull
-    int maxLength();
-
-
-    /**
      * If can be null
      *
      * @return if true can be null
@@ -52,6 +35,7 @@ public @interface EditableField {
      *
      * @return pattern string
      */
+    @NotNull
     String pattern() default "";
 
 
@@ -61,4 +45,11 @@ public @interface EditableField {
      * @return if true current field is date
      */
     boolean isDate() default false;
+
+    /**
+     * Class name where can get array of elements to selection
+     *
+     * @return selection class path
+     */
+    String pathToSelectClass() default "";
 }

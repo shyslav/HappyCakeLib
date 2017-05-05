@@ -1,7 +1,6 @@
 package com.happycake;
 
-import com.happycake.sitemodels.Order;
-import com.happycake.sitemodels.OrderDetails;
+import com.happycake.storages.*;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.driver.DBSpringDriver;
 import com.shyslav.mysql.exceptions.DBException;
@@ -9,7 +8,6 @@ import com.shyslav.springapp.ApplicationSpringContext;
 import com.shyslav.springapp.SpringApplicationException;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
-import com.happycake.storages.*;
 
 /**
  * @author Shyshkin Vladyslav on 29.04.17.
@@ -90,6 +88,22 @@ public class HappyCakeStorage {
     }
 
     /**
+     * Constructor
+     */
+    public HappyCakeStorage(String pathToFile) {
+        ApplicationContext context;
+        try {
+            context = ApplicationSpringContext.getFromEmbedSource(pathToFile);
+            DBSpringDriver driver = (DBSpringDriver) context.getBean("database_driver");
+            this.pool = new ConnectionPool(driver);
+            open();
+        } catch (DBException | SpringApplicationException e) {
+            log.trace("Unable to start db pool " + e.getMessage(), e);
+            System.exit(-1);
+        }
+    }
+
+    /**
      * Open all com.happycake.storages
      *
      * @throws DBException
@@ -112,5 +126,26 @@ public class HappyCakeStorage {
 
     public ConnectionPool getPool() {
         return pool;
+    }
+
+    /**
+     * Clear all storage's
+     *
+     * @throws DBException
+     */
+    public void clear() throws DBException {
+        log.trace("Clear all storage's");
+        webMenuStorage.clear();
+        hotPriceStorage.clear();
+        orderDetailsStorage.clear();
+        orderStorage.clear();
+        preOrderStorage.clear();
+        dishStorage.clear();
+        categoryStorage.clear();
+        newsStorage.clear();
+        reservationStorage.clear();
+        reservationStorage.clear();
+        employeesStorage.clear();
+        positionStorage.clear();
     }
 }
