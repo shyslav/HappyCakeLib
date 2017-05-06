@@ -147,5 +147,6 @@ public class HappyCakeStorage {
         reservationStorage.clear();
         employeesStorage.clear();
         positionStorage.clear();
+        reportsStorage.clear();
     }
 }
