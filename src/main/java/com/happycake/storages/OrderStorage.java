@@ -4,6 +4,7 @@ import com.happycake.sitemodels.Order;
 import com.happycake.sitemodels.OrderDetails;
 import com.happycake.sitemodels.OrderList;
 import com.happycake.sitemodels.Position;
+import com.shyslav.mysql.DBEntityInitializer;
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.exceptions.DBException;
@@ -32,6 +33,21 @@ public class OrderStorage extends DBStorage {
     public void deleteByID(int id) throws DBException {
         orderDetailsStorage.deleteByOrderID(id);
         super.deleteByID(id);
+    }
+
+    /**
+     * Get order list for cook
+     *
+     * @return order list for cook
+     * @throws DBException
+     */
+    public OrderList getOrdersForCook() throws DBException {
+        ArrayList<DBEntity> complite = entityInitializer.select.where("complite", false).execute();
+        OrderList list = new OrderList();
+        for (DBEntity dbEntity : complite) {
+            list.add((Order) dbEntity);
+        }
+        return list;
     }
 
     /**
