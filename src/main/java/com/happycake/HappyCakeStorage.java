@@ -121,7 +121,7 @@ public class HappyCakeStorage {
         this.employeesStorage = new EmployeesStorage(pool);
         this.positionStorage = new PositionStorage(pool);
         this.orderDetailsStorage = new OrderDetailsStorage(pool);
-        this.orderStorage = new OrderStorage(pool, orderDetailsStorage);
+        this.orderStorage = new OrderStorage(pool, orderDetailsStorage, dishStorage);
     }
 
     public ConnectionPool getPool() {

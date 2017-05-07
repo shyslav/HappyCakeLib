@@ -1,9 +1,6 @@
 package com.happycake.storages;
 
-import com.happycake.sitemodels.Order;
-import com.happycake.sitemodels.OrderDetails;
-import com.happycake.sitemodels.OrderList;
-import com.happycake.sitemodels.Position;
+import com.happycake.sitemodels.*;
 import com.shyslav.mysql.DBEntityInitializer;
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
@@ -17,10 +14,12 @@ import java.util.ArrayList;
  */
 public class OrderStorage extends DBStorage {
     private final OrderDetailsStorage orderDetailsStorage;
+    private final DishStorage dishStorage;
 
-    public OrderStorage(ConnectionPool pool, OrderDetailsStorage orderDetailsStorage) throws DBException {
+    public OrderStorage(ConnectionPool pool, OrderDetailsStorage orderDetailsStorage, DishStorage dishStorage) throws DBException {
         super(pool, Order.class);
         this.orderDetailsStorage = orderDetailsStorage;
+        this.dishStorage = dishStorage;
     }
 
     /**
@@ -36,6 +35,28 @@ public class OrderStorage extends DBStorage {
     }
 
     /**
+     * Check need to cook
+     *
+     * @param order order
+     * @return true if need
+     */
+    public boolean isNeedCookOrder(Order order) throws DBException {
+        //get dishes list
+        ArrayList<DBEntity> dishes = dishStorage.getAll();
+        DishesList list = new DishesList();
+        for (DBEntity dish : dishes) {
+            list.add((Dish) dish);
+        }
+        //check dishes in order
+        for (OrderDetails orderDetails : order.getOrderDetails()) {
+            if (list.getByID(orderDetails.getDishID()).isNeedCook()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Get order list for cook
      *
      * @return order list for cook
@@ -47,7 +68,7 @@ public class OrderStorage extends DBStorage {
         for (DBEntity dbEntity : complite) {
             list.add((Order) dbEntity);
         }
-        return list;
+        return load(list);
     }
 
     /**
