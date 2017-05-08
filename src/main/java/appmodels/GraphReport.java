@@ -1,15 +1,13 @@
 package appmodels;
 
-import java.io.Serializable;
-
 /**
- * Created by Shyshkin Vladyslav on 23.05.2016.
+ * @author Shyshkin Vladyslav on 23.05.2016.
  */
-public class _GraphReport implements Serializable{
+public class GraphReport {
     private String name;
     private int amount;
 
-    public _GraphReport(String name, int amount) {
+    public GraphReport(String name, int amount) {
         this.name = name;
         this.amount = amount;
     }

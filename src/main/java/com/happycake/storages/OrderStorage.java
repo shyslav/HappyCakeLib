@@ -1,12 +1,18 @@
 package com.happycake.storages;
 
+import appmodels.GraphReport;
+import appmodels.GraphReportList;
 import com.happycake.sitemodels.*;
 import com.shyslav.mysql.DBEntityInitializer;
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
+import com.shyslav.mysql.connectionpool.MysqlConnection;
 import com.shyslav.mysql.exceptions.DBException;
 import com.shyslav.mysql.interfaces.DBEntity;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -69,6 +75,39 @@ public class OrderStorage extends DBStorage {
             list.add((Order) dbEntity);
         }
         return load(list);
+    }
+
+    /**
+     * Get pie chart for period
+     *
+     * @param startTime start time
+     * @param endTime   end time
+     * @return ArrayList of data to chart
+     * @throws DBException
+     */
+    public GraphReportList getSalesForPeriod(int startTime, int endTime) throws DBException {
+        GraphReportList result = new GraphReportList();
+        try (MysqlConnection session = entityInitializer.getConnectionPool().getConnection()) {
+            String query = "select d.id,d.name,sum(od.amount) as count \n" +
+                    "from orderdetails od \n" +
+                    "inner join dish d on od.id_dish = d.id \n" +
+                    "inner join orders o on o.id = od.id_order \n" +
+                    "where o.date >= ? and o.date <= ? \n" +
+                    "GROUP by d.id";
+            PreparedStatement statement = session.createPrepareStatement(query);
+            statement.setInt(1, startTime);
+            statement.setInt(2, endTime);
+            ResultSet resultSet = session.exectutePrepareStatement();
+            while (resultSet.next()) {
+                String name = resultSet.getString(2);
+                int amount = resultSet.getInt(3);
+                GraphReport report = new GraphReport(name, amount);
+                result.add(report);
+            }
+        } catch (SQLException e) {
+            throw new DBException("Unable to generate pie chart array", e);
+        }
+        return result;
     }
 
     /**
