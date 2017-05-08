@@ -111,6 +111,37 @@ public class OrderStorage extends DBStorage {
     }
 
     /**
+     * Get sales for period group by date
+     *
+     * @param startTime start time
+     * @param endTime   end time
+     * @return ArrayList of data to chart
+     * @throws DBException
+     */
+    public GraphReportList getDateSalesForPeriod(int startTime, int endTime) throws DBException {
+        GraphReportList result = new GraphReportList();
+        try (MysqlConnection session = entityInitializer.getConnectionPool().getConnection()) {
+            String query = "SELECT DATE(FROM_UNIXTIME(date)) as order_date, sum(orderdetails.amount) as amount from orders\n" +
+                    "inner join orderdetails on orders.id = orderdetails.id_order\n" +
+                    "where orders.date >= ? and orders.date <= ? \n" +
+                    "GROUP by order_date";
+            PreparedStatement statement = session.createPrepareStatement(query);
+            statement.setInt(1, startTime);
+            statement.setInt(2, endTime);
+            ResultSet resultSet = session.exectutePrepareStatement();
+            while (resultSet.next()) {
+                String name = resultSet.getString(1);
+                int amount = resultSet.getInt(2);
+                GraphReport report = new GraphReport(name, amount);
+                result.add(report);
+            }
+        } catch (SQLException e) {
+            throw new DBException("Unable to generate pie chart array", e);
+        }
+        return result;
+    }
+
+    /**
      * Add to order details
      *
      * @param list list of orders
