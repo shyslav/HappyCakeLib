@@ -15,26 +15,30 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID категории", pattern = "\\d{1,10}")
+    @EditableField(name = "ID категории", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.CategoriesList")
     @DBField(fieldName = "id_category")
     private int categoryId;
 
-    @EditableField(name = "Имя блюда", pattern = "^[a-zA-Z]{1,10}")
+    @EditableField(name = "Имя блюда", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "ID категории", pathToSelectClass = "com.shyslav")
+    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
     @DBField(fieldName = "description")
     private String description;
 
-    @EditableField(name = "Количество", pattern = "\\d{1,10}")
+    @EditableField(name = "Количество", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,10}")
     @DBField(fieldName = "amount")
     private int amount;
 
+    @EditableField(name = "Цена за единицу", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,10}")
     @DBField(fieldName = "price")
     private double price;
+
+    @EditableField(name = "Картинка", type = EditableField.EditableFields.FILEFIELD, pattern = "\\d{1,10}")
     @DBField(fieldName = "image")
     private byte[] image;
+
     @DBField(fieldName = "need_cook")
     private boolean needCook;
 

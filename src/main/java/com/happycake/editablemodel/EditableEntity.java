@@ -1,5 +1,7 @@
 package com.happycake.editablemodel;
 
+import com.shyslav.mysql.interfaces.DBEntity;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,13 +15,19 @@ import java.util.regex.Pattern;
 public class EditableEntity {
     private EditableField.EditableFields type;
     private Field field;
+    private DBEntity entity;
     private String fieldName;
     private String pattern;
     private String pathToSelectClass;
     private String fieldJavaType;
     private String fieldJavaName;
-    private HashMap<Integer, String> selectableMap;
+    private HashMap<String, Integer> selectableMap;
     private Object value;
+
+    public EditableEntity(Field field, DBEntity entity) {
+        this.field = field;
+        this.entity = entity;
+    }
 
     public EditableField.EditableFields getType() {
         return type;
@@ -53,7 +61,7 @@ public class EditableEntity {
         try {
             Class<?> clazz = Class.forName(pathToSelectClass);
             Method getValue = clazz.getMethod("getSelectableMap");
-            selectableMap = (HashMap<Integer, String>) getValue.invoke(null);
+            selectableMap = (HashMap<String, Integer>) getValue.invoke(null);
         } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             throw new EditableFieldException("Unable to set path to select class", e);
         }
@@ -83,21 +91,65 @@ public class EditableEntity {
         this.fieldJavaName = fieldJavaName;
     }
 
-    public HashMap<Integer, String> getSelectableMap() {
+    public HashMap<String, Integer> getSelectableMap() {
         return selectableMap;
     }
 
     public Object getValue() {
-        return value;
+        if (value != null) {
+            return value;
+        } else {
+            return "";
+        }
     }
 
     public void setValue(Object value) {
+        field.setAccessible(true);
+        try {
+            field.set(entity, value);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         this.value = value;
     }
 
+    /**
+     * Validate value by regex pattern
+     *
+     * @return true if valid
+     */
     public boolean checkWithRegExp() {
+        if (value == null) {
+            return false;
+        }
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(value.toString());
         return m.matches();
+    }
+
+    /**
+     * Get int value
+     *
+     * @return integer value
+     */
+    public int getIntValue() {
+        if (value instanceof Integer) {
+            return (Integer) value;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Get long value
+     *
+     * @return long value
+     */
+    public long getLongValue() {
+        if (value instanceof Integer) {
+            return ((Integer) value).longValue();
+        } else {
+            return 0;
+        }
     }
 }

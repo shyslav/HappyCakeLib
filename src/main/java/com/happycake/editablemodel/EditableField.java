@@ -16,6 +16,7 @@ public @interface EditableField {
     enum EditableFields {
         TEXTFIELD,
         TEXTAREA,
+        NUMBERFIELD,
         FILEFIELD,
         CALENDAR,
         SELECTFIELD

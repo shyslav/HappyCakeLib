@@ -8,12 +8,12 @@ import java.util.List;
  * @author Shyshkin Vladyslav
  */
 public class NewsList extends ArrayList<News> {
-    private static HashMap<Integer, String> selectableMap = new HashMap<>();
+    private static HashMap<String, Integer> selectableMap = new HashMap<>();
     private HashMap<Integer, News> map = new HashMap<>();
 
     @Override
     public boolean add(News news) {
-        selectableMap.put(news.getId(), news.getName());
+        selectableMap.put(news.getName(), news.getId());
         map.put(news.getId(), news);
         return super.add(news);
     }
@@ -114,7 +114,7 @@ public class NewsList extends ArrayList<News> {
      *
      * @return selectable map
      */
-    public static HashMap<Integer, String> getSelectableMap() {
+    public static HashMap<String, Integer> getSelectableMap() {
         return selectableMap;
     }
 }

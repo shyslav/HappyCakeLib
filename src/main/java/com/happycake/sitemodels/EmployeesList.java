@@ -7,12 +7,12 @@ import java.util.HashMap;
  * @author Shyshkin Vladyslav
  */
 public class EmployeesList extends ArrayList<Employees> {
-    private static HashMap<Integer, String> selectableMap = new HashMap<>();
+    private static HashMap<String, Integer> selectableMap = new HashMap<>();
     private HashMap<Integer, Employees> map = new HashMap<>();
 
     @Override
     public boolean add(Employees employees) {
-        selectableMap.put(employees.getId(), employees.getName());
+        selectableMap.put(employees.getName(), employees.getId());
         map.put(employees.getId(), employees);
         return super.add(employees);
     }
@@ -46,7 +46,7 @@ public class EmployeesList extends ArrayList<Employees> {
      *
      * @return selectable map
      */
-    public static HashMap<Integer, String> getSelectableMap() {
+    public static HashMap<String, Integer> getSelectableMap() {
         return selectableMap;
     }
 }

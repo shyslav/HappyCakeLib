@@ -3,7 +3,6 @@ package com.happycake.editablemodel;
 import com.shyslav.mysql.interfaces.DBEntity;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
 /**
@@ -13,14 +12,14 @@ public class EditableParser {
     private final HashMap<String, EditableEntity> entityHashMap = new HashMap<>();
     private final String modelName;
 
-    public EditableParser(DBEntity entity) throws EditableFieldException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public EditableParser(DBEntity entity) throws EditableFieldException {
         if (!entity.getClass().isAnnotationPresent(EditableModel.class)) {
             throw new EditableFieldException(" class doesn't have got model annotation ");
         }
         this.modelName = entity.getClass().getAnnotation(EditableModel.class).name();
         for (Field field : entity.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(EditableField.class)) {
-                EditableEntity editableEntity = new EditableEntity();
+                EditableEntity editableEntity = new EditableEntity(field, entity);
 
                 field.setAccessible(true);
                 editableEntity.setField(field);
@@ -43,7 +42,12 @@ public class EditableParser {
                 EditableField.EditableFields type = field.getAnnotation(EditableField.class).type();
                 editableEntity.setType(type);
 
-                Object value = field.get(entity);
+                Object value;
+                try {
+                    value = field.get(entity);
+                } catch (IllegalAccessException e) {
+                    throw new EditableFieldException("Unable to get field value " + e.getMessage(), e);
+                }
                 editableEntity.setValue(value);
 
                 entityHashMap.put(fieldName, editableEntity);
