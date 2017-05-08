@@ -7,13 +7,8 @@ import java.util.HashMap;
  * @author Shyshkin Vladyslav
  */
 public class CategoriesList extends ArrayList<Category> {
+    private static HashMap<String, Integer> selectableMap = new HashMap<>();
     private HashMap<Integer, Category> map = new HashMap<>();
-
-    @Override
-    public boolean add(Category category) {
-        map.put(category.getId(), category);
-        return super.add(category);
-    }
 
     /**
      * Get category by id
@@ -37,5 +32,20 @@ public class CategoriesList extends ArrayList<Category> {
                 this.remove(i);
             }
         }
+    }
+    /**
+     * Get selectable map
+     *
+     * @return selectable map
+     */
+    public static HashMap<String, Integer> getSelectableMap() {
+        return selectableMap;
+    }
+
+    @Override
+    public boolean add(Category category) {
+        selectableMap.put(category.getName(), category.getId());
+        map.put(category.getId(), category);
+        return super.add(category);
     }
 }

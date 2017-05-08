@@ -12,6 +12,7 @@ public class ReservationList extends ArrayList<Reservation> {
 
     @Override
     public boolean add(Reservation reservation) {
+
         map.put(reservation.getId(), reservation);
         return super.add(reservation);
     }

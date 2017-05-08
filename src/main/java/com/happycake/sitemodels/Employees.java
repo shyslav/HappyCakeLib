@@ -1,5 +1,7 @@
 package com.happycake.sitemodels;
 
+import com.happycake.editablemodel.EditableField;
+import com.happycake.editablemodel.EditableModel;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
@@ -10,24 +12,41 @@ import java.util.Date;
 /**
  * @author Shyshkin Vladyslav on 28.03.2016.
  */
+@EditableModel(name = "Сотрудники")
 @DBModel(tableName = "employees")
 public class Employees implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+
+    @EditableField(name = "ID должности", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.PositionsList")
     @DBField(fieldName = "id_position")
     private int positionID;
+
+    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
     @DBField(fieldName = "id_cafe")
     private int cafeID;
+
+    @EditableField(name = "Имя сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
     @DBField(fieldName = "name")
     private String name;
+
+    @EditableField(name = "Фамилия сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
     @DBField(fieldName = "lastname")
     private String lastname;
+
+    @EditableField(name = "Адресс сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
     @DBField(fieldName = "address")
     private String address;
+
+    @EditableField(name = "Дата дня рождения сотрудника", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
     @DBField(fieldName = "birthday")
     private int birthday;
+
+    @EditableField(name = "Логин для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
     @DBField(fieldName = "login")
     private String login;
+
+    @EditableField(name = "Пароль для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
     @DBField(fieldName = "password")
     private String password;
 

@@ -19,7 +19,8 @@ public @interface EditableField {
         NUMBERFIELD,
         FILEFIELD,
         CALENDAR,
-        SELECTFIELD
+        SELECTFIELD,
+        CHECKBOX
     }
 
     /**

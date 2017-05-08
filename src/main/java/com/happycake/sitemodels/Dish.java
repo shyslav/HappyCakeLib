@@ -19,7 +19,7 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "id_category")
     private int categoryId;
 
-    @EditableField(name = "Имя блюда", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
+    @EditableField(name = "Название блюда", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
     @DBField(fieldName = "name")
     private String name;
 
@@ -39,6 +39,7 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "image")
     private byte[] image;
 
+    @EditableField(name = "Необходимость приготовления", type = EditableField.EditableFields.CHECKBOX, pattern = "^[a-zA-Z]{1,500}")
     @DBField(fieldName = "need_cook")
     private boolean needCook;
 

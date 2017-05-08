@@ -7,10 +7,12 @@ import java.util.HashMap;
  * @author Shyshkin Vladyslav
  */
 public class CafeCoordinateList extends ArrayList<CafeCoordinate> {
+    private static HashMap<String, Integer> selectableMap = new HashMap<>();
     private HashMap<Integer, CafeCoordinate> map = new HashMap<>();
 
     @Override
     public boolean add(CafeCoordinate cafeCoordinate) {
+        selectableMap.put(cafeCoordinate.getAddress(), cafeCoordinate.getId());
         map.put(cafeCoordinate.getId(), cafeCoordinate);
         return super.add(cafeCoordinate);
     }
@@ -37,5 +39,14 @@ public class CafeCoordinateList extends ArrayList<CafeCoordinate> {
                 this.remove(i);
             }
         }
+    }
+
+    /**
+     * Get selectable map
+     *
+     * @return selectable map
+     */
+    public static HashMap<String, Integer> getSelectableMap() {
+        return selectableMap;
     }
 }

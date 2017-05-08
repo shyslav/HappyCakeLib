@@ -1,5 +1,7 @@
 package com.happycake.sitemodels;
 
+import com.happycake.editablemodel.EditableField;
+import com.happycake.editablemodel.EditableModel;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
@@ -10,22 +12,29 @@ import java.util.Date;
 /**
  * @author Shyshkin Vladyslav on 22.04.16.
  */
+@EditableModel(name = "Скидки")
 @DBModel(tableName = "hotprice")
 public class HotPrice implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+
+    @EditableField(name = "ID блюда", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.DishesList")
     @DBField(fieldName = "id_dish")
     private int dishId;
 
+    @EditableField(name = "Процент скидки", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,20}")
     @DBField(fieldName = "percent")
     private int percent;
 
+    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
     @DBField(fieldName = "description")
     private String description;
 
+    @EditableField(name = "Дата начала действия скидки", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
     @DBField(fieldName = "dateStart")
     private int dateStart;
 
+    @EditableField(name = "Дата конца действия скидки", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
     @DBField(fieldName = "dateEnd")
     private int dateEnd;
 

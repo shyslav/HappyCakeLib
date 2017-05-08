@@ -1,5 +1,7 @@
 package com.happycake.sitemodels;
 
+import com.happycake.editablemodel.EditableField;
+import com.happycake.editablemodel.EditableModel;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
@@ -7,14 +9,21 @@ import com.shyslav.mysql.interfaces.DBEntity;
 /**
  * @author Shyshkin Vladyslav on 22.04.16.
  */
+@EditableModel(name = "Контакты заведения")
 @DBModel(tableName = "cafecoordinate")
 public class CafeCoordinate implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+
+    @EditableField(name = "Адресс", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
     @DBField(fieldName = "address")
     private String address;
+
+    @EditableField(name = "Номер мобильного телефона кафе", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\\\+380|0)([0-9]{9}))?$")
     @DBField(fieldName = "mobile_phone")
     private String mobilePhone;
+
+    @EditableField(name = "Электронная почта кафе", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$")
     @DBField(fieldName = "cafe_mail")
     private String email;
 

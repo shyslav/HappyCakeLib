@@ -7,10 +7,21 @@ import java.util.HashMap;
  * @author Shyshkin Vladyslav
  */
 public class PositionsList extends ArrayList<Position> {
+    private static HashMap<String, Integer> selectableMap = new HashMap<>();
     private HashMap<Integer, Position> map = new HashMap<>();
+
+    /**
+     * Get selectable map
+     *
+     * @return selectable map
+     */
+    public static HashMap<String, Integer> getSelectableMap() {
+        return selectableMap;
+    }
 
     @Override
     public boolean add(Position position) {
+        selectableMap.put(position.getName(), position.getId());
         map.put(position.getId(), position);
         return super.add(position);
     }

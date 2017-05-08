@@ -1,5 +1,7 @@
 package com.happycake.sitemodels;
 
+import com.happycake.editablemodel.EditableField;
+import com.happycake.editablemodel.EditableModel;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
@@ -8,18 +10,29 @@ import com.shyslav.utils.LazyDate;
 /**
  * @author Shyshkin Vladyslav on 05.05.2016.
  */
+@EditableModel(name = "Отзывы")
 @DBModel(tableName = "reports")
 public class Reports implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+
+    @EditableField(name = "Автор", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.EmployeesList")
     @DBField(fieldName = "author")
     private String author;
+
+    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
     @DBField(fieldName = "text")
     private String text;
+
+    @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
     @DBField(fieldName = "date")
     private int date;
+
+    @EditableField(name = "Электронная почта", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$")
     @DBField(fieldName = "mail")
     private String mail;
+
+    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\\\+380|0)([0-9]{9}))?$")
     @DBField(fieldName = "phone")
     private String phone;
     @DBField(fieldName = "vision")

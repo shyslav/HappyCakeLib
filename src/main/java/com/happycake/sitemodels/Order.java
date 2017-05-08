@@ -1,5 +1,6 @@
 package com.happycake.sitemodels;
 
+import com.happycake.editablemodel.EditableModel;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
@@ -8,6 +9,7 @@ import com.shyslav.utils.LazyDate;
 /**
  * @author Shyshkin Vladyslav on 22.04.16.
  */
+@EditableModel(name = "Заказы")
 @DBModel(tableName = "orders")
 public class Order implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)

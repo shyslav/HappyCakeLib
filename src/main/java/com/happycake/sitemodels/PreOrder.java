@@ -1,5 +1,7 @@
 package com.happycake.sitemodels;
 
+import com.happycake.editablemodel.EditableField;
+import com.happycake.editablemodel.EditableModel;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
@@ -7,16 +9,25 @@ import com.shyslav.mysql.interfaces.DBEntity;
 /**
  * @author Shyshkin Vladyslav on 06.05.2016.
  */
+@EditableModel(name = "Предзаказы")
 @DBModel(tableName = "preorder")
 public class PreOrder implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+
+    @EditableField(name = "ID блюда", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.DishesList")
     @DBField(fieldName = "id_dish")
     private int dishID;
+
+    @EditableField(name = "ID брони", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.ReservationList")
     @DBField(fieldName = "id_reservation")
     private int reservationID;
+
+    @EditableField(name = "Количество", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,20}")
     @DBField(fieldName = "amount")
     private int amount;
+
+    @EditableField(name = "Цена", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,20}")
     @DBField(fieldName = "price")
     private double price;
 
