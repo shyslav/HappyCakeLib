@@ -13,6 +13,14 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EditableField {
+    enum EditableFields {
+        TEXTFIELD,
+        TEXTAREA,
+        FILEFIELD,
+        CALENDAR,
+        SELECTFIELD
+    }
+
     /**
      * String field name
      *
@@ -21,14 +29,13 @@ public @interface EditableField {
     @NotNull
     String name();
 
-
     /**
-     * If can be null
+     * Field type
      *
-     * @return if true can be null
+     * @return type of field
      */
-    boolean canBeNull() default false;
-
+    @NotNull
+    EditableFields type();
 
     /**
      * Pattern string
@@ -36,15 +43,7 @@ public @interface EditableField {
      * @return pattern string
      */
     @NotNull
-    String pattern() default "";
-
-
-    /**
-     * If field date
-     *
-     * @return if true current field is date
-     */
-    boolean isDate() default false;
+    String pattern();
 
     /**
      * Class name where can get array of elements to selection

@@ -1,5 +1,7 @@
 package com.happycake.sitemodels;
 
+import com.happycake.editablemodel.EditableField;
+import com.happycake.editablemodel.EditableModel;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
@@ -10,22 +12,35 @@ import java.util.Date;
 /**
  * @author Shyshkin Vladyslav on 28.03.2016.
  */
+@EditableModel(name = "Новости")
 @DBModel(tableName = "news")
 public class News implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
+
+    @EditableField(name = "Автор", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.EmployeesList")
     @DBField(fieldName = "id_author")
     private int authorID;
+
+    @EditableField(name = "Заглавие", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,50}")
     @DBField(fieldName = "name")
     private String name;
+
+    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
     @DBField(fieldName = "text")
     private String text;
+
+    @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
     @DBField(fieldName = "date")
     private int date;
+
+    @EditableField(name = "Теги", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,50}")
     @DBField(fieldName = "tags")
     private String tags;
+
     @DBField(fieldName = "views")
     private int view;
+
     @DBField(fieldName = "image_link")
     private String imageLink;
 
