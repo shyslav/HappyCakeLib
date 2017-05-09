@@ -15,7 +15,7 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID категории", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.CategoriesList")
+    @EditableField(name = "ID категории", type = EditableField.EditableFields.SELECTFIELD, pattern = "^[0-9]{1,10}", pathToSelectClass = "com.happycake.sitemodels.CategoriesList")
     @DBField(fieldName = "id_category")
     private int categoryId;
 
@@ -27,19 +27,19 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "description")
     private String description;
 
-    @EditableField(name = "Количество", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,10}")
+    @EditableField(name = "Вес", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[0-9]{1,10}")
     @DBField(fieldName = "amount")
     private int amount;
 
-    @EditableField(name = "Цена за единицу", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,10}")
+    @EditableField(name = "Цена за единицу", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d+\\.\\d+")
     @DBField(fieldName = "price")
     private double price;
 
-    @EditableField(name = "Картинка", type = EditableField.EditableFields.FILEFIELD, pattern = "\\d{1,10}")
+    @EditableField(name = "Картинка", type = EditableField.EditableFields.FILEFIELD)
     @DBField(fieldName = "image")
     private byte[] image;
 
-    @EditableField(name = "Необходимость приготовления", type = EditableField.EditableFields.CHECKBOX, pattern = "^[a-zA-Z]{1,500}")
+    @EditableField(name = "Необходимость приготовления", type = EditableField.EditableFields.CHECKBOX)
     @DBField(fieldName = "need_cook")
     private boolean needCook;
 

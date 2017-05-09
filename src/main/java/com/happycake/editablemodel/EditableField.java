@@ -45,7 +45,7 @@ public @interface EditableField {
      * @return pattern string
      */
     @NotNull
-    String pattern();
+    String pattern() default "";
 
     /**
      * Class name where can get array of elements to selection

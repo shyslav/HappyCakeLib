@@ -122,6 +122,9 @@ public class EditableEntity {
         if (value == null) {
             return false;
         }
+        if (pattern.isEmpty()) {
+            return value != null;
+        }
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(value.toString());
         return m.matches();
