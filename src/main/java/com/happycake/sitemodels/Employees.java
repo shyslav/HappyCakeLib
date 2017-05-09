@@ -5,9 +5,7 @@ import com.happycake.editablemodel.EditableModel;
 import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
-
-import java.io.Serializable;
-import java.util.Date;
+import com.shyslav.utils.LazyDate;
 
 /**
  * @author Shyshkin Vladyslav on 28.03.2016.
@@ -51,6 +49,7 @@ public class Employees implements DBEntity {
     private String password;
 
     public Employees() {
+        this.birthday = LazyDate.getUnixDate();
     }
 
     public int getId() {
