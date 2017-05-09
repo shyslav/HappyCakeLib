@@ -16,7 +16,7 @@ public class Reports implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "Автор", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.EmployeesList")
+    @EditableField(name = "Автор", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,50}")
     @DBField(fieldName = "author")
     private String author;
 
@@ -28,13 +28,15 @@ public class Reports implements DBEntity {
     @DBField(fieldName = "date")
     private int date;
 
-    @EditableField(name = "Электронная почта", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$")
+    @EditableField(name = "Электронная почта", type = EditableField.EditableFields.TEXTFIELD, pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$")
     @DBField(fieldName = "mail")
     private String mail;
 
     @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\\\+380|0)([0-9]{9}))?$")
     @DBField(fieldName = "phone")
     private String phone;
+
+    @EditableField(name = "Видим на сайте", type = EditableField.EditableFields.CHECKBOX)
     @DBField(fieldName = "vision")
     private boolean vision;
 
