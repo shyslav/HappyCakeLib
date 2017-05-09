@@ -10,15 +10,6 @@ public class DishesList extends ArrayList<Dish> {
     private static HashMap<String, Integer> selectableMap = new HashMap<>();
     private HashMap<Integer, Dish> map = new HashMap<>();
 
-    /**
-     * Get selectable map
-     *
-     * @return selectable map
-     */
-    public static HashMap<String, Integer> getSelectableMap() {
-        return selectableMap;
-    }
-
     @Override
     public boolean add(Dish dish) {
         selectableMap.put(dish.getName(), dish.getId());
@@ -77,4 +68,14 @@ public class DishesList extends ArrayList<Dish> {
             }
         }
     }
+
+    /**
+     * Get selectable map
+     *
+     * @return selectable map
+     */
+    public static HashMap<String, Integer> getSelectableMap() {
+        return selectableMap;
+    }
+
 }

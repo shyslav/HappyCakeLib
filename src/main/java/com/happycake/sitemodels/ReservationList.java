@@ -8,11 +8,12 @@ import java.util.List;
  * @author Shyshkin Vladyslav
  */
 public class ReservationList extends ArrayList<Reservation> {
+    private static HashMap<String, Integer> selectableMap = new HashMap<>();
     private HashMap<Integer, Reservation> map = new HashMap<>();
 
     @Override
     public boolean add(Reservation reservation) {
-
+        selectableMap.put(reservation.getClientPhone() + " - " + reservation.getClientName(), reservation.getId());
         map.put(reservation.getId(), reservation);
         return super.add(reservation);
     }
@@ -40,4 +41,14 @@ public class ReservationList extends ArrayList<Reservation> {
             }
         }
     }
+
+    /**
+     * Get selectable map
+     *
+     * @return selectable map
+     */
+    public static HashMap<String, Integer> getSelectableMap() {
+        return selectableMap;
+    }
+
 }
