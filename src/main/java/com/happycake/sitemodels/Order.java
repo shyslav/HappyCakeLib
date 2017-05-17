@@ -6,6 +6,8 @@ import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
 import com.shyslav.utils.LazyDate;
 
+import java.util.Date;
+
 /**
  * @author Shyshkin Vladyslav on 22.04.16.
  */
@@ -78,6 +80,10 @@ public class Order implements DBEntity {
 
     public void setOrderDetails(OrderDetailsList orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public Date getOrderDate() {
+        return LazyDate.getDateFromUnixTimeStaimp(date);
     }
 
     @Override
