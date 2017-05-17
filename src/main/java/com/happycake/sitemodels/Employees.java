@@ -7,6 +7,8 @@ import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
 import com.shyslav.utils.LazyDate;
 
+import java.util.Date;
+
 /**
  * @author Shyshkin Vladyslav on 28.03.2016.
  */
@@ -122,6 +124,10 @@ public class Employees implements DBEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getDateFromUnix() {
+        return LazyDate.getDateFromUnixTimeStaimp(birthday);
     }
 
     @Override

@@ -82,7 +82,7 @@ public class Order implements DBEntity {
         this.orderDetails = orderDetails;
     }
 
-    public Date getOrderDate() {
+    public Date getDateFromUnix() {
         return LazyDate.getDateFromUnixTimeStaimp(date);
     }
 

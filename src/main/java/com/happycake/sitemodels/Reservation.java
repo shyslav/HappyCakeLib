@@ -7,6 +7,8 @@ import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
 import com.shyslav.utils.LazyDate;
 
+import java.util.Date;
+
 /**
  * @author Shyshkin Vladyslav on 22.04.16.
  */
@@ -31,6 +33,7 @@ public class Reservation implements DBEntity {
     @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
     @DBField(fieldName = "date")
     private int date;
+    
     @DBField(fieldName = "confirm")
     private boolean confirm;
 
@@ -109,6 +112,10 @@ public class Reservation implements DBEntity {
 
     public void setDate(int date) {
         this.date = date;
+    }
+
+    public Date getDateFromUnix() {
+        return LazyDate.getDateFromUnixTimeStaimp(date);
     }
 
     @Override

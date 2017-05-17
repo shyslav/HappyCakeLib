@@ -7,6 +7,8 @@ import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
 import com.shyslav.utils.LazyDate;
 
+import java.util.Date;
+
 /**
  * @author Shyshkin Vladyslav on 05.05.2016.
  */
@@ -99,6 +101,10 @@ public class Reports implements DBEntity {
 
     public void setVision(boolean vision) {
         this.vision = vision;
+    }
+
+    public Date getDateFromUnix() {
+        return LazyDate.getDateFromUnixTimeStaimp(date);
     }
 
     @Override
