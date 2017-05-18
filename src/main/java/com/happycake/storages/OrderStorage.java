@@ -2,14 +2,16 @@ package com.happycake.storages;
 
 import appmodels.GraphReport;
 import appmodels.GraphReportList;
+import appmodels.IMTData;
+import appmodels.IMTDataList;
 import com.happycake.sitemodels.*;
-import com.shyslav.mysql.DBEntityInitializer;
 import com.shyslav.mysql.DBStorage;
 import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.connectionpool.MysqlConnection;
 import com.shyslav.mysql.exceptions.DBException;
 import com.shyslav.mysql.interfaces.DBEntity;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -139,6 +141,35 @@ public class OrderStorage extends DBStorage {
             throw new DBException("Unable to generate pie chart array", e);
         }
         return result;
+    }
+
+    /**
+     * Get list of data for IMT algorithm
+     *
+     * @return list of data for IMT algorithm
+     * @throws DBException
+     */
+    public IMTDataList getIMTDataList() throws DBException {
+        IMTDataList result = new IMTDataList();
+        try (MysqlConnection session = entityInitializer.getConnectionPool().getConnection()) {
+            String query =
+                    "select DATE(FROM_UNIXTIME(orders.date)) as unixdate,orderdetails.id_dish, sum(orderdetails.amount) count\n" +
+                            "from orders \n" +
+                            "join orderdetails on orders.id=orderdetails.id_order\n" +
+                            "group by unixdate, orderdetails.id_dish";
+            ResultSet resultSet = session.executeSQLQuery(query);
+            while (resultSet.next()) {
+                Date date = resultSet.getDate(1);
+                int dishID = resultSet.getInt(2);
+                int count = resultSet.getInt(3);
+                IMTData imtData = new IMTData((int) (date.getTime() / 1000), dishID, count);
+                result.add(imtData);
+            }
+        } catch (SQLException e) {
+            throw new DBException("Unable to data for imt algorithm", e);
+        }
+        return result;
+
     }
 
     /**
