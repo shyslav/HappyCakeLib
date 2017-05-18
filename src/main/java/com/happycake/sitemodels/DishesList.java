@@ -18,6 +18,17 @@ public class DishesList extends ArrayList<Dish> {
     }
 
     /**
+     * Get dish names array
+     *
+     * @return array of dish names
+     */
+    public ArrayList<String> getDishNames() {
+        ArrayList<String> strings = new ArrayList<>();
+        strings.addAll(selectableMap.keySet());
+        return strings;
+    }
+
+    /**
      * Get Dish by id
      *
      * @param id category id

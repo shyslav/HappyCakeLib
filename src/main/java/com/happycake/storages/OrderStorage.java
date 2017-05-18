@@ -10,6 +10,7 @@ import com.shyslav.mysql.connectionpool.ConnectionPool;
 import com.shyslav.mysql.connectionpool.MysqlConnection;
 import com.shyslav.mysql.exceptions.DBException;
 import com.shyslav.mysql.interfaces.DBEntity;
+import com.shyslav.utils.LazyArray;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -149,13 +150,14 @@ public class OrderStorage extends DBStorage {
      * @return list of data for IMT algorithm
      * @throws DBException
      */
-    public IMTDataList getIMTDataList() throws DBException {
+    public IMTDataList getIMTDataList(int[] dishIDS) throws DBException {
         IMTDataList result = new IMTDataList();
         try (MysqlConnection session = entityInitializer.getConnectionPool().getConnection()) {
             String query =
                     "select DATE(FROM_UNIXTIME(orders.date)) as unixdate,orderdetails.id_dish, sum(orderdetails.amount) count\n" +
                             "from orders \n" +
                             "join orderdetails on orders.id=orderdetails.id_order\n" +
+                            "where orderdetails.id_dish in (" + LazyArray.arrayToString(dishIDS) + ")\n" +
                             "group by unixdate, orderdetails.id_dish";
             ResultSet resultSet = session.executeSQLQuery(query);
             while (resultSet.next()) {
