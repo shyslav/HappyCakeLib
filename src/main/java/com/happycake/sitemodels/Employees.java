@@ -18,7 +18,7 @@ public class Employees implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "Должность", type = EditableField.EditableFields.TEXTFIELD)
+    @EditableField(name = "Должность", type = EditableField.EditableFields.ENUMTOSTRING, pathToEnumClass = "com.happycake.sitemodels.HappyCakeRoles")
     @DBField(fieldName = "position")
     private String position;
 

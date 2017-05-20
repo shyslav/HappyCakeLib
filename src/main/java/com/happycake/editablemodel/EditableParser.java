@@ -42,6 +42,9 @@ public class EditableParser {
                 EditableField.EditableFields type = field.getAnnotation(EditableField.class).type();
                 editableEntity.setType(type);
 
+                String pathToEnum = field.getAnnotation(EditableField.class).pathToEnumClass();
+                editableEntity.setPathToEnumClass(pathToEnum);
+
                 Object value;
                 try {
                     value = field.get(entity);

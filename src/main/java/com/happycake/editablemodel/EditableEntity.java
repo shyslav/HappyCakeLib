@@ -1,5 +1,6 @@
 package com.happycake.editablemodel;
 
+import com.happycake.sitemodels.HappyCakeRoles;
 import com.shyslav.mysql.interfaces.DBEntity;
 
 import java.lang.reflect.Field;
@@ -19,6 +20,7 @@ public class EditableEntity {
     private String fieldName;
     private String pattern;
     private String pathToSelectClass;
+    private String pathToEnumClass;
     private String fieldJavaType;
     private String fieldJavaName;
     private HashMap<String, Integer> selectableMap;
@@ -53,6 +55,10 @@ public class EditableEntity {
         this.pattern = pattern;
     }
 
+    public void setPathToEnumClass(String pathToEnumClass) {
+        this.pathToEnumClass = pathToEnumClass;
+    }
+
     public void setPathToSelectClass(String pathToSelectClass) throws EditableFieldException {
         if (pathToSelectClass == null || pathToSelectClass.isEmpty()) {
             return;
@@ -64,6 +70,24 @@ public class EditableEntity {
             selectableMap = (HashMap<String, Integer>) getValue.invoke(null);
         } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             throw new EditableFieldException("Unable to set path to select class", e);
+        }
+    }
+
+    /**
+     * Get enum class values
+     *
+     * @return array list of enum values
+     * @throws EditableFieldException
+     */
+    public Object[] getEnumClassValues() throws EditableFieldException {
+        if (pathToEnumClass == null) {
+            return null;
+        }
+        try {
+            Class<?> clazz = Class.forName(pathToEnumClass);
+            return clazz.getEnumConstants();
+        } catch (ClassNotFoundException e) {
+            throw new EditableFieldException("Unable to get enum by path", e);
         }
     }
 

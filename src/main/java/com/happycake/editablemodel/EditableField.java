@@ -20,7 +20,8 @@ public @interface EditableField {
         FILEFIELD,
         CALENDAR,
         SELECTFIELD,
-        CHECKBOX
+        CHECKBOX,
+        ENUMTOSTRING
     }
 
     /**
@@ -53,4 +54,11 @@ public @interface EditableField {
      * @return selection class path
      */
     String pathToSelectClass() default "";
+
+    /**
+     * Path to enum class
+     *
+     * @return path to enum class
+     */
+    String pathToEnumClass() default "";
 }
