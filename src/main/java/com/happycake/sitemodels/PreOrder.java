@@ -6,6 +6,8 @@ import com.shyslav.mysql.annotations.DBField;
 import com.shyslav.mysql.annotations.DBModel;
 import com.shyslav.mysql.interfaces.DBEntity;
 
+import java.util.Map;
+
 /**
  * @author Shyshkin Vladyslav on 06.05.2016.
  */
@@ -31,24 +33,22 @@ public class PreOrder implements DBEntity {
     @DBField(fieldName = "price")
     private double price;
 
-    private String dishName;
-
     public PreOrder() {
     }
 
-    public PreOrder(int dishID, String dishName, int amount, double price) {
+    public PreOrder(int dishID, int amount, double price) {
         this.dishID = dishID;
-        this.dishName = dishName;
         this.amount = amount;
         this.price = price;
     }
 
     public String getDishName() {
-        return dishName;
-    }
-
-    public void setDishName(String dishName) {
-        this.dishName = dishName;
+        for (Map.Entry<String, Integer> stringIntegerEntry : DishesList.getSelectableMap().entrySet()) {
+            if (stringIntegerEntry.getValue() == dishID) {
+                return stringIntegerEntry.getKey();
+            }
+        }
+        return null;
     }
 
     public int getDishID() {
@@ -99,7 +99,6 @@ public class PreOrder implements DBEntity {
                 ", reservationID=" + reservationID +
                 ", amount=" + amount +
                 ", price=" + price +
-                ", dishName='" + dishName + '\'' +
                 '}';
     }
 }
