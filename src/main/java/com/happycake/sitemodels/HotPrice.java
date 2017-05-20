@@ -26,7 +26,7 @@ public class HotPrice implements DBEntity {
     @DBField(fieldName = "percent")
     private int percent;
 
-    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,300}")
+    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,300}")
     @DBField(fieldName = "description")
     private String description;
 

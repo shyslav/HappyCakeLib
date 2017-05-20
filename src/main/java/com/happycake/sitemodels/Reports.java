@@ -18,11 +18,11 @@ public class Reports implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "Автор", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Автор", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "author")
     private String author;
 
-    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}")
+    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}")
     @DBField(fieldName = "text")
     private String text;
 

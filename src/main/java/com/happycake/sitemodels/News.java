@@ -22,11 +22,11 @@ public class News implements DBEntity {
     @DBField(fieldName = "id_author")
     private int authorID;
 
-    @EditableField(name = "Заглавие", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Заглавие", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}")
+    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}")
     @DBField(fieldName = "text")
     private String text;
 
@@ -34,7 +34,7 @@ public class News implements DBEntity {
     @DBField(fieldName = "date")
     private int date;
 
-    @EditableField(name = "Теги", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Теги", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "tags")
     private String tags;
 

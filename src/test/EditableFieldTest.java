@@ -55,7 +55,7 @@ public class EditableFieldTest {
      */
     @Test
     public void patternTestText(){
-        Pattern p = Pattern.compile("[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}");
+        Pattern p = Pattern.compile("[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}");
         Matcher m = p.matcher("some text любой текст+-.,/;:_");
         assertTrue(m.matches());
     }
@@ -65,7 +65,7 @@ public class EditableFieldTest {
      */
     @Test
     public void patternTestTextArea(){
-        Pattern p = Pattern.compile("[\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}");
+        Pattern p = Pattern.compile("[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}");
         Matcher m = p.matcher("some text любой текст+-.,/;:_");
         assertTrue(m.matches());
     }

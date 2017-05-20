@@ -19,11 +19,11 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "id_category")
     private int categoryId;
 
-    @EditableField(name = "Название блюда", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Название блюда", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,300}")
+    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,300}")
     @DBField(fieldName = "description")
     private String description;
 

@@ -15,7 +15,7 @@ public class CafeCoordinate implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "Адресс", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Адресс", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "address")
     private String address;
 

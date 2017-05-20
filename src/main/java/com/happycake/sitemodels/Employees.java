@@ -26,15 +26,15 @@ public class Employees implements DBEntity {
     @DBField(fieldName = "id_cafe")
     private int cafeID;
 
-    @EditableField(name = "Имя сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Имя сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "Фамилия сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Фамилия сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "lastname")
     private String lastname;
 
-    @EditableField(name = "Адресс сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,100}")
+    @EditableField(name = "Адресс сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,100}")
     @DBField(fieldName = "address")
     private String address;
 
@@ -42,11 +42,11 @@ public class Employees implements DBEntity {
     @DBField(fieldName = "birthday")
     private int birthday;
 
-    @EditableField(name = "Логин для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,10}")
+    @EditableField(name = "Логин для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,10}")
     @DBField(fieldName = "login")
     private String login;
 
-    @EditableField(name = "Пароль для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,500}")
+    @EditableField(name = "Пароль для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,500}")
     @DBField(fieldName = "password")
     private String password;
 

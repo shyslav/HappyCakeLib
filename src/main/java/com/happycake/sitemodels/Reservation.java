@@ -22,7 +22,7 @@ public class Reservation implements DBEntity {
     @DBField(fieldName = "id_cafe")
     private int cafeId;
 
-    @EditableField(name = "Имя клиента", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Имя клиента", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "client_name")
     private String clientName;
 
@@ -41,7 +41,7 @@ public class Reservation implements DBEntity {
     @DBField(fieldName = "amount_peoples")
     private int amountPeople;
 
-    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,500}")
+    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,500}")
     @DBField(fieldName = "description")
     private String description;
 
