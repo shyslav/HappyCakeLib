@@ -4,6 +4,7 @@ import com.happycake.sitemodels.Employees;
 import com.happycake.sitemodels.EmployeesList;
 import com.happycake.sitemodels.News;
 import com.happycake.sitemodels.NewsList;
+import com.shyslav.utils.LazyDate;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
@@ -28,6 +29,65 @@ public class EditableFieldTest {
         assertTrue(parser.getEntityHashMap().get("authorID").getValue().equals(1));
         assertTrue(parser.getEntityHashMap().get("authorID").checkWithRegExp());
     }
+
+    /**
+     * test pattern for phone
+     */
+    @Test
+    public void patternTestPhone(){
+        Pattern p = Pattern.compile("^((\\+380|0)([0-9]{9}))?$");
+        Matcher m = p.matcher("0913030595");
+        assertTrue(m.matches());
+    }
+
+    /**
+     * test pattern for email
+     */
+    @Test
+    public void patternTestTextEmail(){
+        Pattern p = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher m = p.matcher("marinas0595@gmail.com");
+        assertTrue(m.matches());
+    }
+
+    /**
+     * test pattern for textfield
+     */
+    @Test
+    public void patternTestText(){
+        Pattern p = Pattern.compile("[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}");
+        Matcher m = p.matcher("some text любой текст+-.,/;:_");
+        assertTrue(m.matches());
+    }
+
+    /**
+     * test pattern for textarea
+     */
+    @Test
+    public void patternTestTextArea(){
+        Pattern p = Pattern.compile("[\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}");
+        Matcher m = p.matcher("some text любой текст+-.,/;:_");
+        assertTrue(m.matches());
+    }
+    /**
+     * test pattern for numbers
+     */
+    @Test
+    public void patternTestNumber(){
+        Pattern p = Pattern.compile("[\\d]{1,11}");
+        Matcher m = p.matcher("1000000");
+        assertTrue(m.matches());
+    }
+    /**
+     * test pattern for double numbers
+     */
+    @Test
+    public void patternTestNumberDouble(){
+        Pattern p = Pattern.compile("^\\d*\\.?\\d*$");
+        Matcher m = p.matcher("1000000.0");
+        assertTrue(m.matches());
+    }
+
 
     private News loadNews() {
         News news = new News();

@@ -18,23 +18,23 @@ public class HotPrice implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID блюда", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.DishesList")
+    @EditableField(name = "ID блюда", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.DishesList")
     @DBField(fieldName = "id_dish")
     private int dishId;
 
-    @EditableField(name = "Процент скидки", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,20}")
+    @EditableField(name = "Процент скидки", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "percent")
     private int percent;
 
-    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
+    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,300}")
     @DBField(fieldName = "description")
     private String description;
 
-    @EditableField(name = "Дата начала действия скидки", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
+    @EditableField(name = "Дата начала действия скидки", type = EditableField.EditableFields.CALENDAR, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "dateStart")
     private int dateStart;
 
-    @EditableField(name = "Дата конца действия скидки", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
+    @EditableField(name = "Дата конца действия скидки", type = EditableField.EditableFields.CALENDAR, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "dateEnd")
     private int dateEnd;
 
