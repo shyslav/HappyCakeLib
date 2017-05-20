@@ -15,7 +15,7 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID категории", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.CategoriesList")
+    @EditableField(name = "ID категории", type = EditableField.EditableFields.SELECTFIELD, pattern = "^[1-9]\\d*$", pathToSelectClass = "com.happycake.sitemodels.CategoriesList")
     @DBField(fieldName = "id_category")
     private int categoryId;
 

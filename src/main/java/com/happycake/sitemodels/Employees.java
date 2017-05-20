@@ -22,15 +22,15 @@ public class Employees implements DBEntity {
     @DBField(fieldName = "position")
     private String position;
 
-    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
+    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "^[1-9]\\d*$", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
     @DBField(fieldName = "id_cafe")
     private int cafeID;
 
-    @EditableField(name = "Имя сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Имя сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "Фамилия сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
+    @EditableField(name = "Фамилия сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\d\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "lastname")
     private String lastname;
 

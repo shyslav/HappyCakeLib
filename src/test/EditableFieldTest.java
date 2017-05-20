@@ -41,6 +41,28 @@ public class EditableFieldTest {
         assertTrue(m.matches());
     }
 
+    @Test
+    public void patternNoZero() {
+        Pattern p = Pattern.compile("^[1-9]\\d*$");
+        Matcher m = p.matcher("913030595");
+        assertTrue(m.matches());
+
+        m = p.matcher("1");
+        assertTrue(m.matches());
+
+        m = p.matcher("10");
+        assertTrue(m.matches());
+
+        m = p.matcher("100");
+        assertTrue(m.matches());
+
+        m = p.matcher("12345678910");
+        assertTrue(m.matches());
+
+        m = p.matcher("0");
+        assertFalse(m.matches());
+    }
+
     /**
      * test pattern for email
      */

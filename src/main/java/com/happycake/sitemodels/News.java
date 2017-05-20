@@ -18,7 +18,7 @@ public class News implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "Автор", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.EmployeesList")
+    @EditableField(name = "Автор", type = EditableField.EditableFields.SELECTFIELD, pattern = "^[1-9]\\d*$", pathToSelectClass = "com.happycake.sitemodels.EmployeesList")
     @DBField(fieldName = "id_author")
     private int authorID;
 

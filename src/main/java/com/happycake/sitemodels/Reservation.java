@@ -18,7 +18,7 @@ public class Reservation implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
+    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "^[1-9]\\d*$", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
     @DBField(fieldName = "id_cafe")
     private int cafeId;
 
@@ -33,7 +33,7 @@ public class Reservation implements DBEntity {
     @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "date")
     private int date;
-    
+
     @DBField(fieldName = "confirm")
     private boolean confirm;
 
