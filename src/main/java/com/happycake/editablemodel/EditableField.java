@@ -17,7 +17,7 @@ public @interface EditableField {
         TEXTFIELD,
         TEXTAREA,
         NUMBERFIELD,
-        FILEFIELD,
+        IMAGEFIELD,
         CALENDAR,
         SELECTFIELD,
         CHECKBOX,

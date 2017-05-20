@@ -23,7 +23,7 @@ public class Category implements DBEntity {
     @DBField(fieldName = "description")
     private String description;
 
-    @EditableField(name = "Рисунок категории", type = EditableField.EditableFields.FILEFIELD)
+    @EditableField(name = "Рисунок категории", type = EditableField.EditableFields.IMAGEFIELD)
     @DBField(fieldName = "image")
     private byte[] image;
 

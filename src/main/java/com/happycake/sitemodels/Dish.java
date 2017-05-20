@@ -35,7 +35,7 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "price")
     private double price;
 
-    @EditableField(name = "Картинка", type = EditableField.EditableFields.FILEFIELD)
+    @EditableField(name = "Картинка", type = EditableField.EditableFields.IMAGEFIELD)
     @DBField(fieldName = "image")
     private byte[] image;
 
