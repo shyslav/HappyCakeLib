@@ -61,11 +61,6 @@ public class HappyCakeStorage {
     public EmployeesStorage employeesStorage;
 
     /**
-     * Positions storage
-     */
-    public PositionStorage positionStorage;
-
-    /**
      * Orders storage
      */
     public OrderStorage orderStorage;
@@ -119,7 +114,6 @@ public class HappyCakeStorage {
         this.preOrderStorage = new PreOrderStorage(pool);
         this.reportsStorage = new ReportsStorage(pool);
         this.employeesStorage = new EmployeesStorage(pool);
-        this.positionStorage = new PositionStorage(pool);
         this.orderDetailsStorage = new OrderDetailsStorage(pool);
         this.orderStorage = new OrderStorage(pool, orderDetailsStorage, dishStorage);
     }
@@ -146,7 +140,6 @@ public class HappyCakeStorage {
         reservationStorage.clear();
         reservationStorage.clear();
         employeesStorage.clear();
-        positionStorage.clear();
         reportsStorage.clear();
     }
 }

@@ -18,9 +18,9 @@ public class Employees implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID должности", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.PositionsList")
-    @DBField(fieldName = "id_position")
-    private int positionID;
+    @EditableField(name = "Должность", type = EditableField.EditableFields.TEXTFIELD)
+    @DBField(fieldName = "position")
+    private String position;
 
     @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
     @DBField(fieldName = "id_cafe")
@@ -62,12 +62,12 @@ public class Employees implements DBEntity {
         this.id = id;
     }
 
-    public int getPositionID() {
-        return positionID;
+    public HappyCakeRoles getPosition() {
+        return HappyCakeRoles.valueOf(position);
     }
 
-    public void setPositionID(int positionID) {
-        this.positionID = positionID;
+    public void setPosition(HappyCakeRoles position) {
+        this.position = position.toString();
     }
 
     public int getCafeID() {
@@ -134,7 +134,7 @@ public class Employees implements DBEntity {
     public String toString() {
         return "Employees{" +
                 "id=" + id +
-                ", positionID=" + positionID +
+                ", position='" + position + '\'' +
                 ", cafeID=" + cafeID +
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
