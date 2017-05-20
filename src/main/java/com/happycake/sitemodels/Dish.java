@@ -27,11 +27,11 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "description")
     private String description;
 
-    @EditableField(name = "Вес", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[\\d]{1,11}")
+    @EditableField(name = "Вес", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[1-9]\\d*$")
     @DBField(fieldName = "amount")
     private int amount;
 
-    @EditableField(name = "Цена за единицу", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^\\d*\\.?\\d*$")
+    @EditableField(name = "Цена за единицу", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[0-9]\\d*\\.?[1-9]\\d*$")
     @DBField(fieldName = "price")
     private double price;
 

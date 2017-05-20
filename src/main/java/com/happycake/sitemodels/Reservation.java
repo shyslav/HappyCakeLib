@@ -26,7 +26,7 @@ public class Reservation implements DBEntity {
     @DBField(fieldName = "client_name")
     private String clientName;
 
-    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\+380|0)([0-9]{9}))?$")
+    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.TEXTFIELD, pattern = "[0-9-]{5,15}")
     @DBField(fieldName = "client_phone")
     private String clientPhone;
 
@@ -37,7 +37,7 @@ public class Reservation implements DBEntity {
     @DBField(fieldName = "confirm")
     private boolean confirm;
 
-    @EditableField(name = "Количество людей", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[\\d]{1,11}")
+    @EditableField(name = "Количество людей", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[1-9]\\d*$")
     @DBField(fieldName = "amount_peoples")
     private int amountPeople;
 

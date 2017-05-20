@@ -19,11 +19,11 @@ public class CafeCoordinate implements DBEntity {
     @DBField(fieldName = "address")
     private String address;
 
-    @EditableField(name = "Номер мобильного телефона кафе", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\+380|0)([0-9]{9}))?$")
+    @EditableField(name = "Номер мобильного телефона кафе", type = EditableField.EditableFields.TEXTFIELD, pattern = "[0-9-]{5,15}")
     @DBField(fieldName = "mobile_phone")
     private String mobilePhone;
 
-    @EditableField(name = "Электронная почта кафе", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+    @EditableField(name = "Электронная почта кафе", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
     @DBField(fieldName = "cafe_mail")
     private String email;
 

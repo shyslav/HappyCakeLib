@@ -36,7 +36,7 @@ public class EditableFieldTest {
      */
     @Test
     public void patternTestPhone() {
-        Pattern p = Pattern.compile("^((\\+380|0)([0-9]{9}))?$");
+        Pattern p = Pattern.compile("[0-9-]{9}");
         Matcher m = p.matcher("0913030595");
         assertTrue(m.matches());
     }

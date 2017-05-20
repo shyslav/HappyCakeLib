@@ -25,11 +25,11 @@ public class PreOrder implements DBEntity {
     @DBField(fieldName = "id_reservation")
     private int reservationID;
 
-    @EditableField(name = "Количество", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[\\d]{1,11}")
+    @EditableField(name = "Количество", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[1-9]\\d*$")
     @DBField(fieldName = "amount")
     private int amount;
 
-    @EditableField(name = "Цена", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^\\d*\\.?\\d*$")
+    @EditableField(name = "Цена", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[0-9]d*\\.?[1-9]\\d*$")
     @DBField(fieldName = "price")
     private double price;
 

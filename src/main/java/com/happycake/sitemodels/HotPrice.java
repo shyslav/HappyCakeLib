@@ -18,11 +18,11 @@ public class HotPrice implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID блюда", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.DishesList")
+    @EditableField(name = "ID блюда", type = EditableField.EditableFields.SELECTFIELD, pattern = "^[1-9]\\d*$", pathToSelectClass = "com.happycake.sitemodels.DishesList")
     @DBField(fieldName = "id_dish")
     private int dishId;
 
-    @EditableField(name = "Процент скидки", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[\\d]{1,11}")
+    @EditableField(name = "Процент скидки", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[1-9]\\d*$")
     @DBField(fieldName = "percent")
     private int percent;
 
