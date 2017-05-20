@@ -17,19 +17,19 @@ public class PreOrder implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID блюда", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.DishesList")
+    @EditableField(name = "ID блюда", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.DishesList")
     @DBField(fieldName = "id_dish")
     private int dishID;
 
-    @EditableField(name = "ID брони", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.ReservationList")
+    @EditableField(name = "ID брони", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.ReservationList")
     @DBField(fieldName = "id_reservation")
     private int reservationID;
 
-    @EditableField(name = "Количество", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,20}")
+    @EditableField(name = "Количество", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "amount")
     private int amount;
 
-    @EditableField(name = "Цена", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,20}")
+    @EditableField(name = "Цена", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^\\d*\\.?\\d*$")
     @DBField(fieldName = "price")
     private double price;
 

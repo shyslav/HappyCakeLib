@@ -22,31 +22,31 @@ public class Employees implements DBEntity {
     @DBField(fieldName = "position")
     private String position;
 
-    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
+    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
     @DBField(fieldName = "id_cafe")
     private int cafeID;
 
-    @EditableField(name = "Имя сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
+    @EditableField(name = "Имя сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "Фамилия сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
+    @EditableField(name = "Фамилия сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern ="[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "lastname")
     private String lastname;
 
-    @EditableField(name = "Адресс сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
+    @EditableField(name = "Адресс сотрудника", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,100}")
     @DBField(fieldName = "address")
     private String address;
 
-    @EditableField(name = "Дата дня рождения сотрудника", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
+    @EditableField(name = "Дата дня рождения сотрудника", type = EditableField.EditableFields.CALENDAR, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "birthday")
     private int birthday;
 
-    @EditableField(name = "Логин для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
+    @EditableField(name = "Логин для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,10}")
     @DBField(fieldName = "login")
     private String login;
 
-    @EditableField(name = "Пароль для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
+    @EditableField(name = "Пароль для входа в систему", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,500}")
     @DBField(fieldName = "password")
     private String password;
 

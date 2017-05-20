@@ -18,30 +18,30 @@ public class Reservation implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
+    @EditableField(name = "ID заведения", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.CafeCoordinateList")
     @DBField(fieldName = "id_cafe")
     private int cafeId;
 
-    @EditableField(name = "Имя клиента", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
+    @EditableField(name = "Имя клиента", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "client_name")
     private String clientName;
 
-    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\\\+380|0)([0-9]{9}))?$")
+    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\+380|0)([0-9]{9}))?$")
     @DBField(fieldName = "client_phone")
     private String clientPhone;
 
-    @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
+    @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "date")
     private int date;
     
     @DBField(fieldName = "confirm")
     private boolean confirm;
 
-    @EditableField(name = "Количество людей", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d{1,20}")
+    @EditableField(name = "Количество людей", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "amount_peoples")
     private int amountPeople;
 
-    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
+    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,500}")
     @DBField(fieldName = "description")
     private String description;
 

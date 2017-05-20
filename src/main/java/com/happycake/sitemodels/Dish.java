@@ -15,23 +15,23 @@ public class Dish implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "ID категории", type = EditableField.EditableFields.SELECTFIELD, pattern = "^[0-9]{1,10}", pathToSelectClass = "com.happycake.sitemodels.CategoriesList")
+    @EditableField(name = "ID категории", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.CategoriesList")
     @DBField(fieldName = "id_category")
     private int categoryId;
 
-    @EditableField(name = "Название блюда", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,15}")
+    @EditableField(name = "Название блюда", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
+    @EditableField(name = "Описание", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,300}")
     @DBField(fieldName = "description")
     private String description;
 
-    @EditableField(name = "Вес", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^[0-9]{1,10}")
+    @EditableField(name = "Вес", type = EditableField.EditableFields.NUMBERFIELD, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "amount")
     private int amount;
 
-    @EditableField(name = "Цена за единицу", type = EditableField.EditableFields.NUMBERFIELD, pattern = "\\d+\\.\\d+")
+    @EditableField(name = "Цена за единицу", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^\\d*\\.?\\d*$")
     @DBField(fieldName = "price")
     private double price;
 

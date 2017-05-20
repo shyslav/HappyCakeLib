@@ -18,23 +18,23 @@ public class Reports implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "Автор", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,50}")
+    @EditableField(name = "Автор", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "author")
     private String author;
 
-    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
+    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}")
     @DBField(fieldName = "text")
     private String text;
 
-    @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
+    @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "date")
     private int date;
 
-    @EditableField(name = "Электронная почта", type = EditableField.EditableFields.TEXTFIELD, pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$")
+    @EditableField(name = "Электронная почта", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
     @DBField(fieldName = "mail")
     private String mail;
 
-    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\\\+380|0)([0-9]{9}))?$")
+    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.NUMBERFIELD, pattern = "^((\\+380|0)([0-9]{9}))?$")
     @DBField(fieldName = "phone")
     private String phone;
 

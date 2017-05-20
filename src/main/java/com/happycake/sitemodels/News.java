@@ -18,23 +18,23 @@ public class News implements DBEntity {
     @DBField(fieldName = "id", isAutoIncrement = true)
     private int id;
 
-    @EditableField(name = "Автор", type = EditableField.EditableFields.SELECTFIELD, pattern = "\\d{1,10}", pathToSelectClass = "com.happycake.sitemodels.EmployeesList")
+    @EditableField(name = "Автор", type = EditableField.EditableFields.SELECTFIELD, pattern = "[\\d]{1,11}", pathToSelectClass = "com.happycake.sitemodels.EmployeesList")
     @DBField(fieldName = "id_author")
     private int authorID;
 
-    @EditableField(name = "Заглавие", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,50}")
+    @EditableField(name = "Заглавие", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "name")
     private String name;
 
-    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "^[a-zA-Z]{1,500}")
+    @EditableField(name = "Текст новости", type = EditableField.EditableFields.TEXTAREA, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,16777215}")
     @DBField(fieldName = "text")
     private String text;
 
-    @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "\\d{1,20}")
+    @EditableField(name = "Дата", type = EditableField.EditableFields.CALENDAR, pattern = "[\\d]{1,11}")
     @DBField(fieldName = "date")
     private int date;
 
-    @EditableField(name = "Теги", type = EditableField.EditableFields.TEXTFIELD, pattern = "^[a-zA-Z]{1,50}")
+    @EditableField(name = "Теги", type = EditableField.EditableFields.TEXTFIELD, pattern = "[\\w\\t\\n\\r\\f\\v\\W*.]{3,50}")
     @DBField(fieldName = "tags")
     private String tags;
 
