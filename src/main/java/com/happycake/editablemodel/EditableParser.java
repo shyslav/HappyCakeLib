@@ -3,13 +3,14 @@ package com.happycake.editablemodel;
 import com.shyslav.mysql.interfaces.DBEntity;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * @author Shyshkin Vladyslav on 08.05.17.
  */
 public class EditableParser {
-    private final HashMap<String, EditableEntity> entityHashMap = new HashMap<>();
+    private final LinkedHashMap<String, EditableEntity> entityHashMap = new LinkedHashMap<>();
     private final String modelName;
 
     public EditableParser(DBEntity entity) throws EditableFieldException {
@@ -62,7 +63,7 @@ public class EditableParser {
         return modelName;
     }
 
-    public HashMap<String, EditableEntity> getEntityHashMap() {
+    public Map<String, EditableEntity> getEntityHashMap() {
         return entityHashMap;
     }
 }
