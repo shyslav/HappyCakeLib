@@ -195,6 +195,7 @@ public class OrderStorage extends DBStorage {
      */
     public void saveOrderWithDetails(Order order) throws DBException {
         long newID = saveAndGetLastInsertID(order);
+        order.setId((int) newID);
         for (OrderDetails details : order.getOrderDetails()) {
             details.setOrderId((int) newID);
             orderDetailsStorage.save(details);
