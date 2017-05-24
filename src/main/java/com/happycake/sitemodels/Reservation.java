@@ -26,7 +26,7 @@ public class Reservation implements DBEntity {
     @DBField(fieldName = "client_name")
     private String clientName;
 
-    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.TEXTFIELD, pattern = "[0-9-]{5,15}")
+    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.TEXTFIELD, pattern = "[0-9+-]{5,15}")
     @DBField(fieldName = "client_phone")
     private String clientPhone;
 

@@ -19,7 +19,7 @@ public class CafeCoordinate implements DBEntity {
     @DBField(fieldName = "address")
     private String address;
 
-    @EditableField(name = "Номер мобильного телефона кафе", type = EditableField.EditableFields.TEXTFIELD, pattern = "[0-9-]{5,15}")
+    @EditableField(name = "Номер мобильного телефона кафе", type = EditableField.EditableFields.TEXTFIELD, pattern = "[0-9+-]{5,15}")
     @DBField(fieldName = "mobile_phone")
     private String mobilePhone;
 
