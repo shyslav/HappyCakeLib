@@ -34,7 +34,7 @@ public class Reports implements DBEntity {
     @DBField(fieldName = "mail")
     private String mail;
 
-    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.TEXTFIELD, pattern = "[0-9-]{5,15}")
+    @EditableField(name = "Номер мобильного телефона", type = EditableField.EditableFields.TEXTFIELD, pattern = "[0-9+-]{5,15}")
     @DBField(fieldName = "phone")
     private String phone;
 
