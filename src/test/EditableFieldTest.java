@@ -4,16 +4,13 @@ import com.happycake.sitemodels.Employees;
 import com.happycake.sitemodels.EmployeesList;
 import com.happycake.sitemodels.News;
 import com.happycake.sitemodels.NewsList;
-import com.shyslav.utils.LazyDate;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author Shyshkin Vladyslav on 08.05.17.
