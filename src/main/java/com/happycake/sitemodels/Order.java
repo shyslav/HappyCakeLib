@@ -86,6 +86,14 @@ public class Order implements DBEntity {
         return LazyDate.getDateFromUnixTimeStaimp(date);
     }
 
+    public void calcFullPrice() {
+        double fullPrice = 0;
+        for (OrderDetails orderDetail : orderDetails) {
+            fullPrice += orderDetail.getPrice();
+        }
+        this.fullPrice = fullPrice;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
